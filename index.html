@@ -136,6 +136,21 @@
   .masthead-strip b{ color:var(--ink); font-weight:500; }
 
   /* ============ HERO ============ */
+  /* page-mascot — a character at the top of the page that follows the cursor */
+  .mascot{
+    position:relative; display:block; float:right; flex-shrink:0;
+    width:150px; height:150px; padding:0; border:0; margin:.2rem 0 1rem 1.6rem;
+    background:transparent; appearance:none; -webkit-appearance:none;
+    cursor:pointer; user-select:none; -webkit-user-select:none;
+  }
+  .mascot-body{ position:relative; display:block; width:100%; height:100%; transform-origin:50% 78%; }
+  .mascot-layer{
+    position:absolute; inset:0;
+    background-size:300% 300%; background-repeat:no-repeat;
+  }
+  @media (max-width:640px){ .mascot{ width:114px; height:114px; margin-left:1rem; } }
+  @media print{ .mascot{ display:none; } }
+
   .hero{ padding:1rem 0 2.6rem; border-bottom:1px solid var(--rule); }
   .hero .kicker{ color:var(--mark); display:flex; align-items:center; gap:.7rem; margin-bottom:1.1rem; }
   .hero .kicker::after{ content:""; flex:1; height:1px; background:var(--rule); max-width:9rem; }
@@ -354,6 +369,12 @@
 
   <!-- ============ HERO ============ -->
   <section class="hero fade">
+    <button class="mascot" id="mascot" type="button" aria-label="Boop the mascot">
+      <span class="mascot-body">
+        <span class="mascot-layer" data-sheet="directions" style="background-image:url(mascots/hijabi-directions.webp)"></span>
+        <span class="mascot-layer" data-sheet="reactions" style="background-image:url(mascots/hijabi-reactions.webp);opacity:0"></span>
+      </span>
+    </button>
     <p class="kicker">Applied LLM Systems · Turkish Legal Domain</p>
     <h1>Research that ships.</h1>
     <p class="deck">
@@ -936,6 +957,106 @@
     var chosen = null;
     try { chosen = localStorage.getItem('theme'); } catch (err) {}
     if (!chosen) lbl.textContent = e.matches ? 'Light' : 'Dark';
+  });
+})();
+</script>
+<script>
+/* page-mascot 0.1.0 — MIT (c) Kamran Ahmed — https://koboyo.com/page-mascot
+   The published component is React; this is a faithful vanilla port of dist/mascot.js,
+   because this page is a single static file with no build step. */
+(function(){
+  var button = document.getElementById('mascot');
+  if (!button) return;
+
+  var DIRECTIONS = ['up-left','up','up-right','left','center','right','down-left','down','down-right'];
+  var REACTIONS  = ['blink','heart','sparkle','surprised','wink','bashful','sleepy','dizzy','delighted'];
+  // Clockwise from the right, matching atan2 with y pointing down.
+  var CLOCKWISE  = ['right','down-right','down','down-left','left','up-left','up','up-right'];
+
+  var SECTOR = (Math.PI * 2) / CLOCKWISE.length,
+      HYSTERESIS = 0.12,
+      DEAD_ZONE = 70,
+      PAYOFFS = ['heart','sparkle','delighted'],
+      BOOP_PAYOFF = 120, BOOP_END = 560, SQUASH_MS = 420,
+      DIZZY_AFTER = 4, DIZZY_WINDOW = 1600, DIZZY_END = 1100;
+
+  var SQUASH = [
+    { transform:'scale(1, 1)', easing:'ease-in' },
+    { transform:'scale(1.10, 0.86)', offset:0.18, easing:'ease-out' },
+    { transform:'scale(0.95, 1.08)', offset:0.45, easing:'ease-in-out' },
+    { transform:'scale(1.03, 0.97)', offset:0.72, easing:'ease-in-out' },
+    { transform:'scale(1, 1)' }
+  ];
+
+  var body     = button.querySelector('.mascot-body'),
+      dirLayer = button.querySelector('[data-sheet="directions"]'),
+      reaLayer = button.querySelector('[data-sheet="reactions"]');
+
+  // background-size 300% makes each cell a clean 0/50/100% step on both axes.
+  function cell(el, index){
+    el.style.backgroundPosition = (index % 3) * 50 + '% ' + Math.floor(index / 3) * 50 + '%';
+  }
+  function wrap(angle){ return Math.atan2(Math.sin(angle), Math.cos(angle)); }
+
+  function setDirection(name){ cell(dirLayer, DIRECTIONS.indexOf(name)); }
+  function setReaction(name){
+    cell(reaLayer, REACTIONS.indexOf(name == null ? 'blink' : name));
+    dirLayer.style.opacity = name ? '0' : '1';
+    reaLayer.style.opacity = name ? '1' : '0';
+  }
+  setDirection('center');
+  setReaction(null);
+
+  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    var sector = -1, pointer = null;
+
+    var aim = function(){
+      if (!pointer) return;
+      var box = button.getBoundingClientRect();
+      var dx = pointer.x - (box.left + box.width / 2);
+      var dy = pointer.y - (box.top + box.height / 2);
+      if (Math.hypot(dx, dy) < DEAD_ZONE) { sector = -1; setDirection('center'); return; }
+      // Hold the current sector until the pointer is well past its edge.
+      var angle = Math.atan2(dy, dx);
+      if (sector !== -1 && Math.abs(wrap(angle - sector * SECTOR)) < SECTOR / 2 + HYSTERESIS) return;
+      sector = (Math.round(angle / SECTOR) + CLOCKWISE.length) % CLOCKWISE.length;
+      setDirection(CLOCKWISE[sector]);
+    };
+
+    window.addEventListener('pointermove', function(e){
+      pointer = { x:e.clientX, y:e.clientY };
+      aim();
+    }, { passive:true });
+    window.addEventListener('scroll', aim, { passive:true });
+  }
+
+  var timers = [], boops = { count:0, at:0 };
+
+  button.addEventListener('click', function(){
+    timers.forEach(window.clearTimeout);
+    timers = [];
+    var later = function(ms, next){
+      timers.push(window.setTimeout(function(){ setReaction(next); }, ms));
+    };
+
+    var now = Date.now();
+    boops.count = (now - boops.at < DIZZY_WINDOW) ? boops.count + 1 : 1;
+    boops.at = now;
+
+    if (boops.count >= DIZZY_AFTER) {
+      boops.count = 0;
+      setReaction('dizzy');
+      later(DIZZY_END, null);
+    } else {
+      setReaction('blink');
+      later(BOOP_PAYOFF, PAYOFFS[(boops.count - 1) % PAYOFFS.length]);
+      later(BOOP_END, null);
+    }
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    // Per-keyframe easing with the effect itself linear: an easing on the effect
+    // would reinterpret every offset and front-load the whole bounce.
+    if (body.animate) body.animate(SQUASH, { duration:SQUASH_MS, easing:'linear' });
   });
 })();
 </script>
