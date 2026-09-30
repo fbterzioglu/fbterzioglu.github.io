@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Fatma Betül Terzioğlu — AI / ML Research & Development</title>
+<title>Fatma Betül Terzioğlu — AI / ML Research &amp; Development</title>
 <meta name="description" content="AI/ML research and development engineer working on applied language-model systems for the Turkish legal domain — retrieval, multi-agent architectures, and production LLM pipelines. Co-author of four papers on Turkish NLP.">
 <meta name="author" content="Fatma Betül Terzioğlu">
 <link rel="canonical" href="https://fbterzioglu.github.io/">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9A%96%EF%B8%8F%3C/text%3E%3C/svg%3E">
-<meta name="theme-color" content="#F7F7F5" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#0F1013" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23100904'/%3E%3Ctext x='50' y='66' font-family='Arial' font-weight='700' font-size='46' text-anchor='middle' fill='%23ffedd7'%3EFBT%3C/text%3E%3C/svg%3E">
+<meta name="theme-color" content="#100904">
+<link rel="preload" href="assets/fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin>
 
 <meta property="og:type" content="profile">
 <meta property="og:title" content="Fatma Betül Terzioğlu — AI / ML Research &amp; Development">
@@ -26,1038 +26,628 @@
 <meta name="twitter:image" content="https://fbterzioglu.github.io/og.png">
 
 <style>
-  /* minimal reset — the artifact host supplied one; standalone needs its own */
-  *,*::before,*::after{ box-sizing:border-box; }
-  html{ -webkit-text-size-adjust:100%; }
-  body{ margin:0; }
-  img,svg{ max-width:100%; height:auto; }
-  h1,h2,h3,h4,p,ol,ul,dl,dd{ margin:0; }
-  ol,ul{ padding:0; }
-
-  /* theme toggle — Pages has no host switcher, so we stamp data-theme ourselves */
-  .theme-toggle{
-    position:fixed; top:.9rem; right:.9rem; z-index:50;
-    background:var(--paper-2); color:var(--ink-2);
-    border:1px solid var(--rule); border-radius:0;
-    padding:.4rem .7rem; cursor:pointer;
-    font-family:var(--mono); font-size:.6rem; letter-spacing:.12em;
-    text-transform:uppercase; line-height:1;
-    transition:color .15s, border-color .15s;
+  @font-face{
+    font-family:"Inter Var"; src:url(assets/fonts/InterVariable.woff2) format("woff2");
+    font-weight:100 900; font-style:normal; font-display:swap;
   }
-  .theme-toggle:hover{ color:var(--mark); border-color:var(--mark); }
-  @media print{ .theme-toggle{ display:none; } }
+  :root{
+    color-scheme:dark;
+    --cream:#ffedd7; --walnut:#100904; --bark:#382416; --cork:#40372e; --drift:#6c5f51;
+    --muted:#b3a490; --ember:#dc5000;
+    --sans:"Inter Var", Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    --pad:clamp(16px, 3.2vw, 45px);
+    --display:clamp(48px, 8.6vw, 124px);
+    --h2:clamp(34px, 3.6vw, 51px);
+    --h3:clamp(28px, 2.85vw, 41px);
+    --b29:clamp(22px, 2vw, 29px);
+  }
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ -webkit-text-size-adjust:100%; scroll-behavior:smooth; scroll-padding-top:72px; }
+  body{
+    margin:0; background:var(--walnut); color:var(--cream);
+    font-family:var(--sans); font-feature-settings:"ss01" 1;
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  }
+  img{ max-width:100%; height:auto; display:block; }
+  h1,h2,h3,p,ol,ul,dl,dd,figure{ margin:0; }
+  ol,ul{ padding:0; list-style:none; }
+  a{ color:var(--cream); }
+  a:hover{ color:#f3c9a2; }
+  :focus-visible{ outline:1px dashed var(--cream); outline-offset:4px; }
+  ::selection{ background:var(--bark); color:var(--cream); }
+
+  /* type roles — two voices: UPPERCASE 500 labels/headings, mixed-case 400 description */
+  .lbl{ font-size:12px; font-weight:500; text-transform:uppercase; line-height:1.25; }
+  .disp,.h-title,.h-card,.h-step,h2{ font-weight:500; text-transform:uppercase; line-height:.9; }
+  h2{ font-size:var(--h2); }
+  .h-title{ font-size:var(--h3); }
+  .h-card{ font-size:24px; line-height:1.09; }
+  .h-step{ font-size:18px; line-height:1; }
+  .b29{ font-size:var(--b29); font-weight:400; line-height:1.26; }
+  .txt{ font-size:16px; font-weight:400; line-height:1.55; }
+  .muted{ color:var(--muted); }
+  .ember{ color:var(--ember); }
+  .stat-n,.fig-n{ font-size:clamp(34px, 3vw, 41px); font-weight:500; line-height:.9; text-transform:uppercase; }
+  .fig-n{ font-size:clamp(40px, 3.6vw, 51px); }
+  .legal{ font-family:Arial, system-ui, sans-serif; font-size:8px; font-weight:500; text-transform:uppercase; }
+
+  /* controls — ghost is the default action, the pill appears once (contact) */
+  .ghost{
+    display:inline-flex; align-items:center; gap:8px; min-height:44px; padding:0 20px;
+    border:1px solid var(--cream); border-radius:22.5px; background:transparent; color:var(--cream);
+    font:500 12px/1 var(--sans); text-transform:uppercase; cursor:pointer; list-style:none;
+  }
+  .ghost:hover{ background:var(--bark); }
+  .ghost::-webkit-details-marker{ display:none; }
+  .pill{
+    display:inline-flex; align-items:center; min-height:52px; padding:0 28px; border-radius:36px;
+    background:var(--bark); color:var(--cream); font-size:14px; font-weight:500; text-transform:uppercase; text-decoration:none;
+  }
+  .pill:hover{ background:#4a3120; color:var(--cream); }
+  .ul{ font-size:12px; font-weight:500; text-transform:uppercase; text-decoration:underline; text-underline-offset:4px; }
+
+  /* chrome */
+  .nav{
+    position:fixed; inset:0 0 auto 0; z-index:20; display:flex; justify-content:space-between; align-items:center;
+    padding:18px var(--pad) 18px 24px; transition:background .3s ease;
+  }
+  .nav.scrolled{ background:rgba(16,9,4,.88); -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); }
+  .nav .mark{ font-size:14px; text-decoration:none; }
+  .nav ul{ display:flex; gap:clamp(16px, 2.2vw, 31px); }
+  .nav a{ text-decoration:none; padding-bottom:4px; border-bottom:1px dashed transparent; }
+  .nav a[aria-current="true"]{ border-bottom-color:var(--drift); }
+  .vl{
+    position:fixed; right:12px; top:50%; transform:translateY(-50%); z-index:10;
+    writing-mode:vertical-rl; font-size:11px; font-weight:500; text-transform:uppercase; pointer-events:none;
+  }
+  .skip{ position:absolute; left:-9999px; }
+  .skip:focus{ left:16px; top:16px; z-index:30; background:var(--bark); padding:10px 14px; }
+
+  /* hero — photographic mode */
+  .hero{ position:relative; min-height:100vh; min-height:100svh; overflow:hidden; }
+  .hero-img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:50% 50%; }
+  .hero-top{ position:absolute; left:24px; right:var(--pad); top:clamp(96px, 13vh, 118px); display:flex; flex-direction:column; gap:18px; }
+  .hero h1{ font-size:var(--display); font-weight:500; text-transform:uppercase; line-height:.9; }
+  .card{
+    border:1px solid var(--cork); border-radius:12px; padding:24px;
+    display:flex; flex-direction:column; gap:14px;
+  }
+  .hero .info{ position:absolute; left:24px; bottom:41px; width:min(380px, calc(100% - 48px)); background:rgba(16,9,4,.66); }
+  
+  .hero .latest{
+    position:absolute; right:var(--pad); bottom:41px; width:260px; padding:14px; flex-direction:row; align-items:center;
+    background:rgba(16,9,4,.66); text-decoration:none;
+  }
+  .latest img{ width:72px; height:72px; border-radius:12px; background:var(--walnut); flex-shrink:0; }
+  .latest span{ display:flex; flex-direction:column; gap:8px; }
+  .hero .credit{ position:absolute; left:calc(24px + 380px + 18px); bottom:43px; }
+  .dash{ border:0; border-top:1px dashed var(--cork); margin:0; }
+
+  /* void-mode screens: heading / object / description */
+  .screen{ position:relative; min-height:100vh; min-height:100svh; padding:84px var(--pad) 41px; display:flex; flex-direction:column; }
+  .screen-head{ display:flex; justify-content:space-between; gap:18px; padding-bottom:14px; border-bottom:1px dashed var(--cork); }
+  .stage{
+    flex:1; display:grid; align-items:center; gap:36px; padding:41px 0;
+    grid-template-columns:minmax(0, 380px) minmax(0, 1fr) minmax(0, 340px);
+  }
+  .col-l,.col-r{ display:flex; flex-direction:column; gap:24px; }
+  .col-r{ gap:31px; }
+  .col-c{ display:flex; justify-content:center; }
+  .obj{ width:min(560px, 100%); aspect-ratio:1; object-fit:contain; }
+  .figure{ display:flex; flex-direction:column; gap:10px; }
+  .screen-foot{ display:flex; justify-content:space-between; align-items:center; gap:24px 45px; padding-top:18px; border-top:1px dashed var(--cork); }
+  .screen-foot .authors,.screen-foot .stack{ max-width:900px; line-height:1.55; }
+  .screen-foot .ul{ flex-shrink:0; }
+  .more{ padding-top:18px; }
+  .more[open] summary{ margin-bottom:24px; }
+  .more summary::after{ content:"+"; }
+  .more[open] summary::after{ content:"\2212"; }
+  .more > .txt{ max-width:820px; }
+  .cols{ columns:2 320px; column-gap:45px; }
+  .cols .txt{ break-inside:avoid; margin-bottom:18px; }
+  .facts > div{ display:flex; justify-content:space-between; gap:18px; padding:10px 0; border-top:1px dashed var(--cork); }
+  .facts dd{ text-align:right; }
+  .callout{ display:flex; flex-direction:column; gap:10px; padding-top:14px; border-top:1px dashed var(--cork); }
+  .callout .txt{ font-size:15px; }
+  .stats{ display:grid; grid-template-columns:repeat(6, minmax(0, 1fr)); gap:18px; padding-top:24px; border-top:1px dashed var(--cork); }
+  .stats li{ display:flex; flex-direction:column; gap:10px; }
+  .section-intro{ display:flex; flex-direction:column; gap:24px; }
+  .section-intro .txt{ max-width:560px; }
+
+  /* list screens */
+  .grid3{ display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:18px; margin-top:41px; }
+  .grid3 .txt{ font-size:15px; }
+  .timeline{ display:grid; grid-template-columns:repeat(5, minmax(0, 1fr)); gap:31px; margin-top:68px; border-top:1px dashed var(--drift); }
+  .timeline li{ display:flex; flex-direction:column; gap:18px; }
+  .timeline .dot{ width:9px; height:9px; border-radius:9999px; background:var(--cream); margin-top:-5px; }
+  .timeline .txt{ font-size:15px; }
+  .scope{ display:grid; grid-template-columns:minmax(0, 380px) minmax(0, 1fr); gap:45px; margin-top:41px; }
+  .scope dl > div{ display:grid; grid-template-columns:260px minmax(0, 1fr); gap:31px; padding:13px 0; border-top:1px dashed var(--cork); }
+  .scope dd.txt{ font-size:15px; }
+  .contact-links{ display:flex; flex-direction:column; gap:14px; }
+  footer{ display:flex; justify-content:space-between; gap:18px; flex-wrap:wrap; padding:18px var(--pad) 41px; }
+  footer > p{ padding-top:18px; border-top:1px dashed var(--cork); flex:1; }
+  footer > p + p{ text-align:right; }
+
+  /* entrance — quiet, and off for anyone who asks */
+  @media (prefers-reduced-motion:no-preference){
+    .js .rise{ opacity:0; transform:translateY(14px); transition:opacity .9s ease, transform .9s ease; }
+    .js .rise.in{ opacity:1; transform:none; }
+  }
+  @media (prefers-reduced-motion:reduce){ html{ scroll-behavior:auto; } }
+
+  @media (max-width:1080px){
+    .stage{ grid-template-columns:minmax(0, 1fr) minmax(0, 1fr); }
+    .col-c{ grid-column:2; grid-row:1 / span 2; }
+    .stats{ grid-template-columns:repeat(3, minmax(0, 1fr)); row-gap:31px; }
+    .grid3{ grid-template-columns:repeat(2, minmax(0, 1fr)); }
+    .timeline{ grid-template-columns:repeat(2, minmax(0, 1fr)); row-gap:41px; border-top:0; }
+    .timeline li{ border-top:1px dashed var(--drift); }
+    .scope{ grid-template-columns:1fr; }
+    .hero .credit{ display:none; }
+  }
+  @media (max-width:720px){
+    .nav{ padding:14px 16px; }
+    .nav .hide-s{ display:none; }
+    .vl{ display:none; }
+    .hero-top{ left:16px; right:16px; }
+    .hero .info{ left:16px; bottom:24px; width:calc(100% - 32px); padding:18px; }
+    .hero .latest{ display:none; }
+    .screen{ min-height:0; padding-top:72px; padding-bottom:61px; }
+    .stage{ grid-template-columns:1fr; gap:24px; padding:31px 0; }
+    .col-c{ grid-column:auto; grid-row:auto; }
+    .obj{ width:100%; }
+    .screen-foot{ flex-direction:column; align-items:flex-start; }
+    .stats{ grid-template-columns:repeat(2, minmax(0, 1fr)); }
+    .grid3,.timeline{ grid-template-columns:1fr; }
+    .scope dl > div{ grid-template-columns:1fr; gap:8px; }
+    footer > p + p{ text-align:left; }
+  }
+  @media print{
+    .nav,.vl,.hero-img,.obj,.more summary{ display:none !important; }
+    body{ background:#fff; color:#111; }
+    .screen,.hero{ min-height:0; }
+    .more > *{ display:block !important; }
+  }
 </style>
 </head>
 <body>
-<button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch between light and dark theme">
-  <span id="themeLabel">Dark</span>
-</button>
-<style>
-  /* ============ TOKENS ============ */
-  :root{
-    --paper:      #F7F7F5;
-    --paper-2:    #EFEFEB;
-    --paper-3:    #E7E7E2;
-    --ink:        #15161A;
-    --ink-2:      #545963;
-    --ink-3:      #8A8F99;
-    --rule:       #D9D9D4;
-    --rule-2:     #C4C4BE;
-    --mark:       #9C2B22;
-    --mark-bg:    rgba(156,43,34,.06);
+<a class="skip lbl" href="#intro">Skip to content</a>
 
-    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
-    --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+<header class="nav">
+  <a class="mark lbl" href="#top" lang="tr">F.B. TERZİOĞLU</a>
+  <nav aria-label="Sections">
+    <ul>
+      <li class="hide-s"><a class="lbl" href="#intro" data-section="intro">Intro</a></li>
+      <li><a class="lbl" href="#publications" data-section="publications">Publications</a></li>
+      <li><a class="lbl" href="#work" data-section="work">Work</a></li>
+      <li><a class="lbl" href="#contact" data-section="contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+<div class="vl" aria-hidden="true" lang="tr">F.B. TERZİOĞLU — PORTFOLIO 2026</div>
 
-    --measure: 34rem;
-    --gutter: clamp(1.15rem, 4vw, 3rem);
-  }
-  @media (prefers-color-scheme: dark){
-    :root{
-      --paper:#0F1013; --paper-2:#17181C; --paper-3:#1E2026;
-      --ink:#EDEDE8; --ink-2:#A2A7B0; --ink-3:#6E7480;
-      --rule:#2A2C32; --rule-2:#3A3D45;
-      --mark:#E2685C; --mark-bg:rgba(226,104,92,.09);
-    }
-  }
-  :root[data-theme="dark"]{
-    --paper:#0F1013; --paper-2:#17181C; --paper-3:#1E2026;
-    --ink:#EDEDE8; --ink-2:#A2A7B0; --ink-3:#6E7480;
-    --rule:#2A2C32; --rule-2:#3A3D45;
-    --mark:#E2685C; --mark-bg:rgba(226,104,92,.09);
-  }
-  :root[data-theme="light"]{
-    --paper:#F7F7F5; --paper-2:#EFEFEB; --paper-3:#E7E7E2;
-    --ink:#15161A; --ink-2:#545963; --ink-3:#8A8F99;
-    --rule:#D9D9D4; --rule-2:#C4C4BE;
-    --mark:#9C2B22; --mark-bg:rgba(156,43,34,.06);
-  }
+<main>
+  <section class="hero" id="top" aria-label="Introduction">
+    <img class="hero-img" src="assets/hero-2400.webp" srcset="assets/hero-1200.webp 1200w, assets/hero-2400.webp 2400w" sizes="100vw" width="2400" height="1512" alt="" fetchpriority="high">
+    <div class="hero-top">
+      <p class="lbl">Applied LLM systems · Turkish legal domain</p>
+      <h1 lang="tr">FATMA BETÜL<br>TERZİOĞLU</h1>
+    </div>
+    <div class="card info">
+      <p class="h-card">Research that ships.</p>
+      <hr class="dash">
+      <p class="txt" style="font-size:15px">AI / ML Research &amp; Development Engineer at NewMind.ai. I build language-model systems for law, in a language most models were not designed for.</p>
+      <p class="lbl muted" lang="tr">TÜRKİYE · TURKISH · ENGLISH</p>
+    </div>
+    <a class="card latest" href="#pub-1">
+      <img src="assets/objects/trajectory.webp" width="840" height="840" alt="">
+      <span><span class="lbl">Latest — RDP LoRA</span><span class="lbl muted">arXiv:2604.19321 · 2026</span></span>
+    </a>
+    <p class="legal ember credit">* Still life rendered from code, not photographed.</p>
+  </section>
 
-  /* ============ BASE ============ */
-  *{ box-sizing:border-box; }
-  body{
-    margin:0; background:var(--paper); color:var(--ink);
-    font-family:var(--serif); font-size:17px; line-height:1.66;
-    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
-  }
-  .wrap{ max-width:74rem; margin:0 auto; padding:0 var(--gutter) 5rem; }
-  a{ color:inherit; text-decoration-color:var(--rule-2); text-underline-offset:3px; }
-  a:hover{ text-decoration-color:var(--mark); }
-  :focus-visible{ outline:2px solid var(--mark); outline-offset:3px; }
-  .kicker{
-    font-family:var(--mono); font-size:.66rem; letter-spacing:.15em;
-    text-transform:uppercase; color:var(--ink-3); margin:0;
-  }
-  .num{ font-variant-numeric:tabular-nums; }
-  .mono{ font-family:var(--mono); font-size:.85em; letter-spacing:-.01em; }
-
-  /* ============ MASTHEAD ============ */
-  .masthead{ border-bottom:3px double var(--ink); padding:1.6rem 0 .7rem; margin-bottom:2.4rem; }
-  .masthead-top{
-    display:flex; flex-wrap:wrap; gap:.6rem 1.4rem; align-items:baseline;
-    justify-content:space-between; border-bottom:1px solid var(--rule);
-    padding-bottom:.7rem; margin-bottom:.9rem;
-  }
-  .wordmark{
-    font-size:clamp(1.5rem,4.4vw,2.3rem); font-weight:700;
-    letter-spacing:-.015em; margin:0; line-height:1;
-  }
-  .wordmark .dot{ color:var(--mark); }
-  .dateline{
-    font-family:var(--mono); font-size:.66rem; letter-spacing:.13em;
-    text-transform:uppercase; color:var(--ink-3);
-    display:flex; gap:1.2rem; flex-wrap:wrap;
-  }
-  .masthead-strip{
-    display:flex; flex-wrap:wrap; gap:.4rem 1.6rem;
-    font-family:var(--mono); font-size:.66rem; letter-spacing:.11em;
-    text-transform:uppercase; color:var(--ink-2);
-  }
-  .masthead-strip b{ color:var(--ink); font-weight:500; }
-
-  /* ============ HERO ============ */
-  /* page-mascot — a character at the top of the page that follows the cursor */
-  .mascot{
-    position:relative; display:block; float:right; flex-shrink:0;
-    width:150px; height:150px; padding:0; border:0; margin:.2rem 0 1rem 1.6rem;
-    background:transparent; appearance:none; -webkit-appearance:none;
-    cursor:pointer; user-select:none; -webkit-user-select:none;
-  }
-  .mascot-body{ position:relative; display:block; width:100%; height:100%; transform-origin:50% 78%; }
-  .mascot-layer{
-    position:absolute; inset:0;
-    background-size:300% 300%; background-repeat:no-repeat;
-  }
-  @media (max-width:640px){ .mascot{ width:114px; height:114px; margin-left:1rem; } }
-  @media print{ .mascot{ display:none; } }
-
-  .hero{ padding:1rem 0 2.6rem; border-bottom:1px solid var(--rule); }
-  .hero .kicker{ color:var(--mark); display:flex; align-items:center; gap:.7rem; margin-bottom:1.1rem; }
-  .hero .kicker::after{ content:""; flex:1; height:1px; background:var(--rule); max-width:9rem; }
-  h1{
-    font-size:clamp(2.5rem,7vw,4.7rem); line-height:1; letter-spacing:-.028em;
-    font-weight:700; margin:0 0 1.1rem; text-wrap:balance; max-width:19ch;
-  }
-  .deck{
-    font-size:clamp(1.1rem,2.1vw,1.36rem); line-height:1.5; color:var(--ink-2);
-    max-width:45rem; margin:0 0 1.5rem; text-wrap:pretty;
-  }
-  .byline{
-    display:flex; flex-wrap:wrap; gap:.5rem 1.1rem; align-items:center;
-    font-family:var(--mono); font-size:.7rem; letter-spacing:.09em;
-    text-transform:uppercase; color:var(--ink-3);
-    border-top:1px solid var(--rule); padding-top:.9rem;
-  }
-  .byline b{ color:var(--ink); font-weight:500; }
-
-  /* ============ INSTRUMENTS ============ */
-  .instruments{
-    display:grid; grid-template-columns:repeat(auto-fit,minmax(9.5rem,1fr));
-    border-top:1px solid var(--rule); border-left:1px solid var(--rule);
-    margin:2.6rem 0 3.4rem;
-  }
-  .tile{
-    border-right:1px solid var(--rule); border-bottom:1px solid var(--rule);
-    padding:1.05rem 1rem 1.15rem;
-  }
-  .tile-v{
-    font-family:var(--mono); font-size:clamp(1.5rem,3.3vw,2.05rem);
-    font-variant-numeric:tabular-nums; letter-spacing:-.04em; line-height:1; margin:0 0 .45rem;
-  }
-  .tile-v small{ font-size:.5em; letter-spacing:0; color:var(--ink-3); }
-  .tile-l{
-    font-family:var(--mono); font-size:.62rem; letter-spacing:.11em;
-    text-transform:uppercase; color:var(--ink-3); margin:0; line-height:1.4;
-  }
-  .tile.accent .tile-v{ color:var(--mark); }
-
-  /* ============ SECTIONS ============ */
-  section.band{ padding-top:3rem; }
-  .head{
-    display:flex; align-items:baseline; gap:1rem;
-    border-bottom:1.5px solid var(--ink); padding-bottom:.5rem; margin-bottom:1.8rem;
-  }
-  .head h2{ font-size:clamp(1.35rem,2.6vw,1.75rem); letter-spacing:-.02em; font-weight:700; margin:0; text-wrap:balance; }
-  .head .count{
-    font-family:var(--mono); font-size:.66rem; letter-spacing:.11em;
-    text-transform:uppercase; color:var(--ink-3); margin-left:auto; white-space:nowrap;
-  }
-  .cols{ columns:2; column-gap:2.6rem; column-rule:1px solid var(--rule); }
-  .cols p{ margin:0 0 1.05rem; text-wrap:pretty; }
-  .cols p:first-child::first-letter{
-    float:left; font-size:3.55em; line-height:.82; font-weight:700;
-    padding:.06em .09em 0 0; color:var(--mark);
-  }
-  @media (max-width:44rem){ .cols{ columns:1; } }
-
-  /* ============ MARGIN NOTE ============ */
-  .note{
-    border-left:2px solid var(--mark); background:var(--mark-bg);
-    padding:.85rem 1.1rem; margin:1.4rem 0; max-width:var(--measure);
-  }
-  .note .tag{
-    font-family:var(--mono); font-size:.6rem; letter-spacing:.14em;
-    text-transform:uppercase; color:var(--mark); display:block; margin-bottom:.32rem;
-  }
-  .note p{ margin:0; font-size:.95rem; color:var(--ink-2); line-height:1.55; }
-
-  /* ============ FEATURES ============ */
-  .feature{
-    display:grid; grid-template-columns:12.5rem 1fr; gap:2.4rem;
-    padding:2rem 0; border-bottom:1px solid var(--rule);
-  }
-  .feature:first-of-type{ border-top:1px solid var(--rule); }
-  .rail{ font-family:var(--mono); font-size:.66rem; line-height:1.75; }
-  .rail dt{ letter-spacing:.12em; text-transform:uppercase; color:var(--ink-3); margin-top:.75rem; }
-  .rail dd{ margin:0; color:var(--ink); font-variant-numeric:tabular-nums; }
-  .rail .role{
-    color:var(--mark); border:1px solid var(--mark); padding:.22rem .5rem;
-    display:inline-block; letter-spacing:.1em; text-transform:uppercase;
-    font-size:.6rem; margin-bottom:.2rem;
-  }
-  .feature h3{
-    font-size:clamp(1.3rem,2.5vw,1.6rem); letter-spacing:-.02em;
-    margin:0 0 .7rem; font-weight:700; text-wrap:balance;
-  }
-  .feature p{ margin:0 0 .9rem; max-width:var(--measure); text-wrap:pretty; }
-  .stack{
-    font-family:var(--mono); font-size:.66rem; line-height:1.7; color:var(--ink-2);
-    border-top:1px solid var(--rule); padding-top:.7rem; margin-top:1rem;
-  }
-  @media (max-width:52rem){
-    .feature{ grid-template-columns:1fr; gap:1.1rem; }
-    .rail{ display:flex; flex-wrap:wrap; gap:.3rem 1.6rem; }
-    .rail dt{ margin-top:0; }
-  }
-
-  /* ============ PUBLICATIONS ============ */
-  .pubs{ list-style:none; margin:0; padding:0; counter-reset:pub; border-top:1px solid var(--rule); }
-  .pubs li{
-    counter-increment:pub;
-    border-bottom:1px solid var(--rule);
-    padding:1.5rem 0 1.5rem 3.2rem;
-    position:relative;
-  }
-  .pubs li::before{
-    content:counter(pub,decimal-leading-zero);
-    position:absolute; left:0; top:1.6rem;
-    font-family:var(--mono); font-variant-numeric:tabular-nums;
-    font-size:.78rem; color:var(--rule-2); letter-spacing:-.02em;
-  }
-  .pub-venue{
-    font-family:var(--mono); font-size:.6rem; letter-spacing:.13em;
-    text-transform:uppercase; color:var(--mark); margin:0 0 .4rem;
-  }
-  .pubs h3{
-    font-size:clamp(1.08rem,2.1vw,1.28rem); letter-spacing:-.018em;
-    margin:0 0 .5rem; font-weight:700; text-wrap:balance; max-width:44rem;
-  }
-  .pub-authors{
-    font-size:.86rem; color:var(--ink-3); margin:0 0 .6rem;
-    max-width:44rem; font-style:italic;
-  }
-  .pub-authors b{ color:var(--ink); font-style:normal; font-weight:600; }
-  .pub-note{ margin:0; font-size:.93rem; color:var(--ink-2); line-height:1.58; max-width:var(--measure); text-wrap:pretty; }
-  .pub-note b{ color:var(--ink); font-weight:600; }
-  @media (max-width:44rem){
-    .pubs li{ padding-left:0; }
-    .pubs li::before{ position:static; display:block; margin-bottom:.4rem; }
-  }
-
-  /* ============ RESEARCH CARDS ============ */
-  .research{
-    display:grid; grid-template-columns:repeat(auto-fit,minmax(17.5rem,1fr));
-    gap:0; border-top:1px solid var(--rule); border-left:1px solid var(--rule);
-  }
-  .rcard{ border-right:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:1.4rem 1.3rem; }
-  .rcard h4{ font-size:1.06rem; letter-spacing:-.015em; margin:.5rem 0 .5rem; font-weight:700; text-wrap:balance; }
-  .rcard p{ margin:0; font-size:.9rem; color:var(--ink-2); line-height:1.55; }
-  .rcard .field{
-    font-family:var(--mono); font-size:.6rem; letter-spacing:.13em;
-    text-transform:uppercase; color:var(--mark); margin:0;
-  }
-
-  /* ============ TABLES ============ */
-  .scroll{ overflow-x:auto; -webkit-overflow-scrolling:touch; }
-  table{ width:100%; border-collapse:collapse; font-size:.86rem; min-width:34rem; }
-  th{
-    font-family:var(--mono); font-size:.6rem; letter-spacing:.12em; text-transform:uppercase;
-    color:var(--ink-3); text-align:left; font-weight:400;
-    border-bottom:1px solid var(--ink); padding:.5rem .8rem .5rem 0; vertical-align:bottom;
-  }
-  td{ border-bottom:1px solid var(--rule); padding:.62rem .8rem .62rem 0; vertical-align:top; line-height:1.5; }
-  td.t-mono{ font-family:var(--mono); font-size:.78rem; color:var(--ink-2); }
-  tbody tr:hover td{ background:var(--paper-2); }
-
-  /* ============ TIMELINE ============ */
-  .phase{ display:grid; grid-template-columns:4.5rem 1fr; gap:1.6rem; padding:1.5rem 0; border-bottom:1px solid var(--rule); }
-  .phase:first-of-type{ border-top:1px solid var(--rule); }
-  .phase-n{
-    font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:2.1rem;
-    line-height:1; letter-spacing:-.05em; color:var(--rule-2);
-  }
-  .phase-date{
-    font-family:var(--mono); font-size:.62rem; letter-spacing:.11em;
-    text-transform:uppercase; color:var(--mark); margin:.45rem 0 0;
-  }
-  .phase h4{ font-size:1.16rem; letter-spacing:-.015em; margin:0 0 .35rem; font-weight:700; text-wrap:balance; }
-  .phase .when{ font-family:var(--mono); font-size:.62rem; letter-spacing:.11em; text-transform:uppercase; color:var(--ink-3); margin:0 0 .5rem; }
-  .phase p{ margin:0; color:var(--ink-2); font-size:.95rem; max-width:var(--measure); text-wrap:pretty; }
-  .phase b{ color:var(--ink); font-weight:600; }
-  @media (max-width:44rem){ .phase{ grid-template-columns:1fr; gap:.5rem; } .phase-n{ font-size:1.4rem; } }
-
-  /* ============ CONTACT ============ */
-  .contact{ background:var(--paper-2); border-top:1.5px solid var(--ink); padding:2.2rem; margin-top:3.4rem; }
-  .contact h2{ font-size:1.3rem; margin:0 0 .6rem; letter-spacing:-.015em; }
-  .contact p{ margin:0 0 1.3rem; color:var(--ink-2); max-width:42rem; }
-  .contact-row{ display:flex; flex-wrap:wrap; gap:.5rem 2rem; font-family:var(--mono); font-size:.72rem; letter-spacing:.06em; }
-  .contact-row span{ color:var(--ink-3); }
-  .contact-row b{ color:var(--ink); font-weight:500; }
-
-  footer{
-    border-top:3px double var(--ink); margin-top:3rem; padding-top:1.1rem;
-    font-family:var(--mono); font-size:.63rem; letter-spacing:.1em;
-    text-transform:uppercase; color:var(--ink-3);
-    display:flex; flex-wrap:wrap; gap:.5rem 1.4rem; justify-content:space-between;
-  }
-
-  @media (prefers-reduced-motion:no-preference){
-    .fade{ animation:rise .7s cubic-bezier(.22,.61,.36,1) both; }
-    .fade:nth-child(2){ animation-delay:.06s; }
-    @keyframes rise{ from{ opacity:0; transform:translateY(9px); } to{ opacity:1; transform:none; } }
-  }
-</style>
-
-<div class="wrap">
-
-  <!-- ============ MASTHEAD ============ -->
-  <header class="masthead">
-    <div class="masthead-top">
-      <p class="wordmark">Fatma Betül Terzioğlu<span class="dot">.</span></p>
-      <div class="dateline">
-        <span>Portfolio 2026</span>
-        <span>Türkiye</span>
+  <section class="screen" id="intro" data-nav="intro" aria-labelledby="intro-t">
+    <div class="screen-head"><span class="lbl">Intro</span><span class="lbl muted">01</span></div>
+    <div class="stage rise">
+      <div class="col-l">
+        <p class="lbl ember">Applied LLM systems</p>
+        <h2 id="intro-t">Built for a domain that punishes hand-waving.</h2>
+      </div>
+      <figure class="col-c"><img class="obj" src="assets/objects/trajectory.webp" width="840" height="840" alt="Rendered object: a coiled trajectory of 36 points, 13 of them highlighted" decoding="async"></figure>
+      <div class="col-r">
+        <p class="b29">Law, in a language most models were not designed for.</p>
+        <p class="txt muted">The work runs from embedding and retrieval infrastructure, through entity resolution and metadata standardization, to multi-agent platforms and production pipelines serving real users.</p>
       </div>
     </div>
-    <div class="masthead-strip">
-      <span><b>AI / ML Research &amp; Development Engineer</b></span>
-      <span>NewMind.ai</span>
-      <span>Applied LLM Systems</span>
-      <span>Legal NLP</span>
-    </div>
-  </header>
-
-  <!-- ============ HERO ============ -->
-  <section class="hero fade">
-    <button class="mascot" id="mascot" type="button" aria-label="Boop the mascot">
-      <span class="mascot-body">
-        <span class="mascot-layer" data-sheet="directions" style="background-image:url(mascots/hijabi-directions.webp)"></span>
-        <span class="mascot-layer" data-sheet="reactions" style="background-image:url(mascots/hijabi-reactions.webp);opacity:0"></span>
-      </span>
-    </button>
-    <p class="kicker">Applied LLM Systems · Turkish Legal Domain</p>
-    <h1>Research that ships.</h1>
-    <p class="deck">
-      I build language-model systems for a domain that punishes hand-waving: law, in a language
-      most models were not designed for. The work runs from embedding and retrieval
-      infrastructure, through entity resolution and metadata standardization, to multi-agent
-      platforms and production pipelines serving real users.
-    </p>
-    <div class="byline">
-      <span>Focus <b>Legal NLP · Multi-agent systems · Retrieval</b></span>
-      <span>Published <b>4 co-authored papers</b></span>
-      <span>Languages <b>Turkish · English</b></span>
-    </div>
+    <ul class="stats" aria-label="At a glance"><li><span class="stat-n">4</span><span class="lbl muted">Co-authored papers</span></li><li><span class="stat-n">6</span><span class="lbl muted">Systems built solo</span></li><li><span class="stat-n">2</span><span class="lbl muted">Team platforms led</span></li><li><span class="stat-n">~50</span><span class="lbl muted">Legal &amp; regulatory sources</span></li><li><span class="stat-n">5</span><span class="lbl muted">RAG architectures benchmarked</span></li><li><span class="stat-n">196K</span><span class="lbl muted">Token context, no vector DB</span></li></ul>
   </section>
 
-  <!-- ============ INSTRUMENTS ============ -->
-  <div class="instruments fade">
-    <div class="tile accent">
-      <p class="tile-v num">4</p>
-      <p class="tile-l">Co-authored papers</p>
+  <section class="screen" id="profile" data-nav="intro" aria-labelledby="profile-t">
+    <div class="screen-head"><span class="lbl">How I work</span><span class="lbl muted">02</span></div>
+    <div class="stage rise">
+      <div class="col-l">
+        <p class="lbl ember">Profile</p>
+        <h2 id="profile-t">A method, not a technology.</h2>
+      </div>
+      <figure class="col-c"><img class="obj" src="assets/objects/trajectory-34.webp" width="840" height="840" alt="The same trajectory seen from a three-quarter angle" loading="lazy" decoding="async"></figure>
+      <div class="col-r">
+        <p class="b29">I build the evaluation harness before I commit to an architecture. Then I carry the answer into production.</p>
+        <p class="txt muted">Sole author of six focused systems; lead contributor on larger team platforms.</p>
+      </div>
     </div>
-    <div class="tile accent">
-      <p class="tile-v num">6</p>
-      <p class="tile-l">Systems built solo</p>
-    </div>
-    <div class="tile">
-      <p class="tile-v num">2</p>
-      <p class="tile-l">Team platforms led</p>
-    </div>
-    <div class="tile">
-      <p class="tile-v num">~50</p>
-      <p class="tile-l">Legal &amp; regulatory sources</p>
-    </div>
-    <div class="tile">
-      <p class="tile-v num">5</p>
-      <p class="tile-l">RAG architectures benchmarked</p>
-    </div>
-    <div class="tile">
-      <p class="tile-v num">196<small>K</small></p>
-      <p class="tile-l">Token context, no vector DB</p>
-    </div>
-  </div>
-
-  <!-- ============ SUMMARY ============ -->
-  <section class="band">
-    <div class="head">
-      <h2>How I work</h2>
-      <span class="count">Profile</span>
-    </div>
-    <div class="cols">
-      <p>
-        The pattern that repeats across my work is a method rather than a technology. I take an
-        open question — can this metadata be standardized automatically, can a group of agents
-        draft a defensible due-diligence report, which model should sit behind this product —
-        and I build an evaluation harness to answer it before I commit to an architecture.
-        Then I carry the answer into production.
-      </p>
-      <p>
-        That second half is the part I care about. Several of these answers now run on live
-        Kubernetes, on schedules, with cost ceilings and failure handling. One of them — a
-        document-generation engine I wrote for a small internal tool — was later adopted
-        wholesale by the company's flagship pipeline. I would rather build a capability once
-        and see it travel than ship a demo that impresses and then rots.
-      </p>
-      <p>
-        I work at both ends of the collaboration spectrum: sole author of six focused systems,
-        and lead contributor on larger team platforms. The surface area is wide for a research
-        role — Python backends, React and TypeScript front ends, Kubernetes deployment, model
-        training and fine-tuning, formal benchmark design — because in applied research the
-        gap between a result and a system is usually where the interesting problems live.
-      </p>
-      <p>
-        My domain is Turkish legal language. It is a genuinely hard setting: morphologically
-        rich, under-resourced relative to English, and unforgiving about correctness, since a
-        wrong citation is not a rounding error but a professional liability. Much of my work is
-        about closing that gap — training Turkish retrieval and embedding models, grounding
-        every generated claim to a source, and building the ingestion layer beneath it all.
-      </p>
-    </div>
+    <details class="more">
+      <summary class="ghost">Read the full profile</summary>
+      <div class="cols">
+            <p class="txt">The pattern that repeats across my work is a method rather than a technology. I take an open question — can this metadata be standardized automatically, can a group of agents draft a defensible due-diligence report, which model should sit behind this product — and I build an evaluation harness to answer it before I commit to an architecture. Then I carry the answer into production.</p>
+            <p class="txt">That second half is the part I care about. Several of these answers now run on live Kubernetes, on schedules, with cost ceilings and failure handling. One of them — a document-generation engine I wrote for a small internal tool — was later adopted wholesale by the company’s flagship pipeline. I would rather build a capability once and see it travel than ship a demo that impresses and then rots.</p>
+            <p class="txt">I work at both ends of the collaboration spectrum: sole author of six focused systems, and lead contributor on larger team platforms. The surface area is wide for a research role — Python backends, React and TypeScript front ends, Kubernetes deployment, model training and fine-tuning, formal benchmark design — because in applied research the gap between a result and a system is usually where the interesting problems live.</p>
+            <p class="txt">My domain is Turkish legal language. It is a genuinely hard setting: morphologically rich, under-resourced relative to English, and unforgiving about correctness, since a wrong citation is not a rounding error but a professional liability. Much of my work is about closing that gap — training Turkish retrieval and embedding models, grounding every generated claim to a source, and building the ingestion layer beneath it all.</p>
+      </div>
+    </details>
   </section>
 
-  <!-- ============ PUBLICATIONS ============ -->
-  <section class="band">
-    <div class="head">
-      <h2>Publications</h2>
-      <span class="count">Four papers · 2025 — 2026</span>
+  <section id="publications" data-nav="publications" aria-labelledby="publications-t">
+    <div class="screen" style="min-height:0; padding-bottom:0; padding-top:120px">
+      <div class="section-intro rise">
+        <h2 id="publications-t">Publications.</h2>
+        <p class="txt muted">Four papers, 2025 — 2026. Co-authored research with the NewMind AI research group, concentrated on making language models work in Turkish — retrieval, hallucination detection, and efficient adaptation. Full listing on <a href="https://scholar.google.com/citations?user=vBzzx-MAAAAJ&amp;hl=en">Google Scholar</a>.</p>
+      </div>
     </div>
-    <p style="max-width:44rem;color:var(--ink-2);margin:0 0 1.8rem">
-      Co-authored research with the NewMind AI research group, concentrated on making language
-      models work in Turkish — retrieval, hallucination detection, and efficient adaptation.
-      Full listing on <a href="https://scholar.google.com/citations?user=vBzzx-MAAAAJ&hl=en">Google Scholar</a>.
-    </p>
-
-    <ol class="pubs">
-      <li>
-        <p class="pub-venue">arXiv:2604.19321 · April 2026</p>
-        <h3>RDP LoRA: Geometry-Driven Identification for Parameter-Efficient Adaptation in Large Language Models</h3>
-        <p class="pub-authors">
-          Yusuf Çelebi, Yağız Asker, Özay Ezerceli, Mahmoud ElHussieni, Selva Taş,
-          Reyhan Bayraktar, <b>Fatma Betül Terzioğlu</b>
-        </p>
-        <p class="pub-note">
-          Models the evolution of hidden states as a high-dimensional geometric trajectory and applies
-          the Ramer–Douglas–Peucker algorithm — parameter-free and training-free — to identify which
-          layers actually warrant adaptation. Using 13 geometrically selected layers of Qwen3-8B-Base
-          reaches <b>81.67% on MMLU-Math</b>, beating full 36-layer adaptation (79.32%), random
-          13-layer selection (75.56%), and the base model (74.25%).
-        </p>
-      </li>
-      <li>
-        <p class="pub-venue">SSRN 6919461 · 2026</p>
-        <h3>Agentology: Ontology-Driven Operational Environments for Multi-Agent Systems</h3>
-        <p class="pub-authors">
-          Uğur Ortaç, E. Tosun, A. K. Özbek, <b>Fatma Betül Terzioğlu</b>, Reyhan Bayraktar
-        </p>
-        <p class="pub-note">
-          Proposes ontology-driven operational environments as a structuring principle for multi-agent
-          systems — the conceptual counterpart to the agent platforms described below.
-        </p>
-      </li>
-      <li>
-        <p class="pub-venue">arXiv:2511.16528 · November 2025</p>
-        <h3>TurkColBERT: A Benchmark of Dense and Late-Interaction Models for Turkish Information Retrieval</h3>
-        <p class="pub-authors">
-          Özay Ezerceli, Mahmoud El Hussieni, Selva Taş, Reyhan Bayraktar,
-          <b>Fatma Betül Terzioğlu</b>, Yusuf Çelebi, Yağız Asker
-        </p>
-        <p class="pub-note">
-          A benchmark of ten models across five Turkish datasets spanning scientific, financial and
-          argumentative domains, using a two-stage adaptation pipeline. The headline finding is a case
-          for late interaction in lower-resource languages: <b>a 1.0M-parameter late-interaction model
-          matches a dense encoder 600× its size</b>, with MUVERA+Rerank indexing delivering
-          sub-millisecond query latency.
-        </p>
-      </li>
-      <li>
-        <p class="pub-venue">arXiv:2509.17671 · September 2025</p>
-        <h3>Turk-LettuceDetect: Hallucination Detection Models for Turkish RAG Applications</h3>
-        <p class="pub-authors">
-          Selva Taş, Mahmut El Huseyni, Özay Ezerceli, Reyhan Bayraktar, <b>Fatma Betül Terzioğlu</b>
-        </p>
-        <p class="pub-note">
-          Hallucination detection for Turkish retrieval-augmented generation: three encoder
-          architectures fine-tuned on a machine-translated RAGTruth corpus of 17,790 instances, with
-          the best model reaching an <b>F1 of 0.7266</b> over contexts up to 8,192 tokens while staying
-          computationally cheap enough to sit in a live pipeline.
-        </p>
-      </li>
-    </ol>
-  </section>
-
-  <!-- ============ SELECTED WORK ============ -->
-  <section class="band">
-    <div class="head">
-      <h2>Selected work</h2>
-      <span class="count">Six of ~34 projects</span>
-    </div>
-
-    <article class="feature">
-      <dl class="rail">
-        <dd><span class="role">Sole maintainer</span></dd>
-        <dt>Scope</dt><dd>Architecture → production</dd>
-        <dt>Sources</dt><dd>~56 ingested</dd>
-        <dt>Status</dt><dd>Live, on schedule</dd>
-      </dl>
-      <div>
-        <h3>Production news intelligence pipeline</h3>
-        <p>
-          An end-to-end system that ingests roughly 56 sources across RSS, sitemaps and browser
-          scraping, filters and summarizes them through staged language-model calls,
-          deduplicates, persists to a document store, and delivers finished briefings through
-          messaging, email, and an automatically typeset journal rendered to DOCX, PDF and
-          slides. A separate control plane handles administration and monitoring.
-        </p>
-        <p>
-          I designed and built the whole system — ingestion, the model stages, persistence,
-          per-stage cost accounting, every delivery channel, the document generator, and the
-          containerized deployment. It ships with a full test suite and runs unattended on a
-          daily, weekly and monthly cadence.
-        </p>
-        <div class="note">
-          <span class="tag">Design decision</span>
-          <p>
-            A hard monthly inference budget with an automatic circuit-breaker is built into the
-            pipeline, not bolted on afterwards. An LLM system without a cost ceiling is a
-            liability in production, and the ceiling has to be a first-class component to be trusted.
-          </p>
+      <article class="screen" id="pub-1" aria-labelledby="pub-1-t">
+        <div class="screen-head"><span class="lbl">Publications</span><span class="lbl muted">01 / 04</span></div>
+        <div class="stage rise">
+          <div class="col-l">
+            <p class="lbl ember">arXiv:2604.19321 · April 2026</p>
+            <h3 class="h-title" id="pub-1-t">RDP LoRA: Geometry-driven identification for parameter-efficient adaptation in large language models</h3>
+          </div>
+          <figure class="col-c"><img class="obj" src="assets/objects/trajectory.webp" width="840" height="840" alt="Rendered object: a coiled trajectory of 36 points, 13 of them highlighted" loading="lazy" decoding="async"></figure>
+          <div class="col-r">
+            <p class="b29">Thirteen geometrically selected layers beat full 36-layer adaptation.</p>
+            <div class="figure"><span class="fig-n">81.67%</span><span class="lbl">MMLU-Math, Qwen3-8B-Base</span></div>
+            <p class="lbl muted">vs 79.32% full · 75.56% random · 74.25% base</p>
+          </div>
         </div>
-        <p class="stack">
-          Python · FastAPI · MongoDB · Playwright · staged LLM routing (DeepSeek, Gemini, Claude) ·
-          document generation (python-docx / PyMuPDF / WeasyPrint / python-pptx) · Docker · Kubernetes · pytest
-        </p>
-      </div>
-    </article>
-
-    <article class="feature">
-      <dl class="rail">
-        <dd><span class="role">Lead contributor</span></dd>
-        <dt>Team</dt><dd>~5 engineers</dd>
-        <dt>Evaluation</dt><dd>External benchmark</dd>
-        <dt>Domain</dt><dd>Legal due diligence</dd>
-      </dl>
-      <div>
-        <h3>Multi-agent platform for legal due diligence</h3>
-        <p>
-          A hierarchical retrieval-augmented system: an orchestrator decomposes a legal question
-          into sub-tasks; parallel subagents retrieve over hybrid dense and full-text search and
-          draft cited subreports; a reviewer agent grounds every claim against its citation; an
-          aggregator merges the results; a report writer assembles the deliverable with a
-          provenance map and a visualization of the agent tree.
-        </p>
-        <p>
-          My contributions centred on the parts that make it trustworthy and deployable: the
-          citation and source-highlighting system, multi-tenant isolation across the backend,
-          interface, pipeline and ontology layers, a restructured prompt-management scheme,
-          embedding-model swaps with GPU support, authored analysis skills for contract
-          comparison and case-law lookup, and the CI/CD pipeline.
-        </p>
-        <div class="note">
-          <span class="tag">Result</span>
-          <p>
-            I bridged the platform to an external legal-AI benchmark scored by an independent
-            model judge — replacing self-assessment with a measure we did not control.
-          </p>
+        <div class="screen-foot">
+          <p class="lbl muted authors" lang="tr">YUSUF ÇELEBİ, YAĞIZ ASKER, ÖZAY EZERCELİ, MAHMOUD ELHUSSİENİ, SELVA TAŞ, REYHAN BAYRAKTAR, <span class="ember">FATMA BETÜL TERZİOĞLU</span></p>
+          <a class="ul" href="https://arxiv.org/abs/2604.19321">Read the paper ↗</a>
         </div>
-        <p class="stack">
-          Python · hierarchical agent orchestration · hybrid retrieval (dense + full-text with rank fusion) ·
-          sentence-transformers · FAISS · A2A protocol · OCR · LaTeX · Docker
-        </p>
-      </div>
-    </article>
-
-    <article class="feature">
-      <dl class="rail">
-        <dd><span class="role">Sole author</span></dd>
-        <dt>Scope</dt><dd>Research → production</dd>
-        <dt>Standard</dt><dd>Dublin Core, 15-element</dd>
-        <dt>Extension</dt><dd>Knowledge graph</dd>
-      </dl>
-      <div>
-        <h3>Automated metadata standardization</h3>
-        <p>
-          A system that ingests heterogeneous documents — spreadsheets, PDF indexes, scanned
-          record catalogs — extracts their core descriptive fields, enriches them with a language
-          model, and emits standardized <b>Dublin Core</b> records through a seven-stage pipeline:
-          extraction, semantic clustering, field cleaning, model enrichment, and identifier
-          filtering.
-        </p>
-        <p>
-          I designed and built every component: the vector-based semantic clusterer, a hybrid
-          rule/model field cleaner, an identifier filter that keeps dates and reference codes from
-          polluting the clustering signal, and a clean-architecture refactor with a typed React
-          front end. The work ran from open research through production deployment and testing,
-          and was then extended into a Neo4j knowledge graph and delivered to the business.
-        </p>
-        <p class="stack">
-          Python · FastAPI · pydantic · sentence-transformers · FAISS · networkx · pandas ·
-          React 19 · TypeScript · Vite · Neo4j · pytest
-        </p>
-      </div>
-    </article>
-
-    <article class="feature">
-      <dl class="rail">
-        <dd><span class="role">Author</span></dd>
-        <dt>Span</dt><dd>Longest-running work</dd>
-        <dt>Coverage</dt><dd>~50 institutions</dd>
-        <dt>Reach</dt><dd>National + international</dd>
-      </dl>
-      <div>
-        <h3>Legal &amp; regulatory data infrastructure</h3>
-        <p>
-          The ingestion layer every other system here stands on: roughly 50 source-specific
-          crawlers spanning the Turkish Court of Cassation, Council of State, Constitutional Court,
-          the Grand National Assembly, the national legislation database, the banking, capital
-          markets, public procurement, revenue, energy, telecoms and central bank regulators, plus
-          the European Court of Human Rights, UK legislation, and academic library and thesis
-          databases.
-        </p>
-        <p>
-          Alongside it: a production-grade containerized regulatory crawler packaged as an
-          installable module with a test suite and pre-commit hooks, and a multi-agent legal
-          document intelligence platform running ingestion, chunking, embedding, hybrid retrieval
-          and entity extraction — with cost control and a security layer designed in from the start.
-        </p>
-        <p class="stack">
-          Python · MongoDB · Kafka · Docker Compose · FastAPI · BGE-M3 · FAISS · Celery + Redis ·
-          PyMuPDF / pdfplumber · Tesseract / Surya OCR · pytest
-        </p>
-      </div>
-    </article>
-
-    <article class="feature">
-      <dl class="rail">
-        <dd><span class="role">Sole author</span></dd>
-        <dt>Architectures</dt><dd>5 compared</dd>
-        <dt>Backends</dt><dd>5 model families</dd>
-        <dt>Tracking</dt><dd>MLflow · LaTeX reports</dd>
-      </dl>
-      <div>
-        <h3>Comparative retrieval &amp; model evaluation lab</h3>
-        <p>
-          A standing environment for answering architecture questions with evidence. Five
-          retrieval strategies implemented in parallel and benchmarked side by side: a naive dense
-          baseline, a classical BM25 baseline, a graph-RAG variant over a Turkish legal database
-          using Neo4j and Cypher, an agentic RAG, and an enterprise
-          planner/retriever/critic/reflection framework — all tracked in MLflow with generated
-          LaTeX reports.
-        </p>
-        <p>
-          Separately, a model-selection study comparing five backends across chat, tool selection,
-          cited conclusions and artifact creation to settle a real product's model choice on
-          evidence rather than preference; a prompt-evaluation harness; and a head-to-head
-          benchmark of two search-augmentation providers.
-        </p>
-        <p class="stack">
-          FAISS · BM25 · Neo4j + Cypher · MLflow · LaTeX · pandas · multi-provider LLM routing
-        </p>
-      </div>
-    </article>
-
-    <article class="feature">
-      <dl class="rail">
-        <dd><span class="role">Sole author</span></dd>
-        <dt>Context</dt><dd>196K tokens</dd>
-        <dt>Corpus</dt><dd>100 docs / session</dd>
-        <dt>Retrieval</dt><dd>None — by design</dd>
-      </dl>
-      <div>
-        <h3>Long-context reasoning without retrieval</h3>
-        <p>
-          A deliberate counter-experiment to the retrieval orthodoxy running through the rest of
-          my work: reasoning over up to 100 documents per session inside a 196K-token window with
-          <b>no embeddings and no vector database at all</b> — sliding windows, map-reduce,
-          context compaction, a hard cost ceiling, and a hallucination and citation guard.
-        </p>
-        <div class="note">
-          <span class="tag">Why build it</span>
-          <p>
-            RAG is the reflex answer for document reasoning, and reflexes deserve testing. As
-            context windows grow, the honest question is which problems still need retrieval —
-            and that question is only answerable if someone builds the alternative and measures it.
-          </p>
+        <details class="more">
+          <summary class="ghost">Abstract</summary>
+          <p class="txt">Models the evolution of hidden states as a high-dimensional geometric trajectory and applies the Ramer–Douglas–Peucker algorithm — parameter-free and training-free — to identify which layers actually warrant adaptation. Using 13 geometrically selected layers of Qwen3-8B-Base reaches 81.67% on MMLU-Math, beating full 36-layer adaptation (79.32%), random 13-layer selection (75.56%), and the base model (74.25%).</p>
+        </details>
+      </article>
+      <article class="screen" id="pub-2" aria-labelledby="pub-2-t">
+        <div class="screen-head"><span class="lbl">Publications</span><span class="lbl muted">02 / 04</span></div>
+        <div class="stage rise">
+          <div class="col-l">
+            <p class="lbl ember">SSRN 6919461 · 2026</p>
+            <h3 class="h-title" id="pub-2-t">Agentology: Ontology-driven operational environments for multi-agent systems</h3>
+          </div>
+          <figure class="col-c"><img class="obj" src="assets/objects/ontology.webp" width="840" height="840" alt="Rendered object: a lattice of nodes joined by arcs on a sphere" loading="lazy" decoding="async"></figure>
+          <div class="col-r">
+            <p class="b29">Ontology-driven operational environments as a structuring principle for multi-agent systems.</p>
+            <p class="lbl muted">The conceptual counterpart to the agent platforms in Selected work</p>
+          </div>
         </div>
-        <p class="stack">
-          Python · FastAPI · tiktoken · sliding-window map-reduce · context compaction · async LLM routing
-        </p>
-      </div>
-    </article>
+        <div class="screen-foot">
+          <p class="lbl muted authors" lang="tr">UĞUR ORTAÇ, E. TOSUN, A. K. ÖZBEK, <span class="ember">FATMA BETÜL TERZİOĞLU</span>, REYHAN BAYRAKTAR</p>
+          <a class="ul" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6919461">Read the paper ↗</a>
+        </div>
+        <details class="more">
+          <summary class="ghost">Abstract</summary>
+          <p class="txt">Proposes ontology-driven operational environments as a structuring principle for multi-agent systems — the conceptual counterpart to the agent platforms described below.</p>
+        </details>
+      </article>
+      <article class="screen" id="pub-3" aria-labelledby="pub-3-t">
+        <div class="screen-head"><span class="lbl">Publications</span><span class="lbl muted">03 / 04</span></div>
+        <div class="stage rise">
+          <div class="col-l">
+            <p class="lbl ember">arXiv:2511.16528 · November 2025</p>
+            <h3 class="h-title" id="pub-3-t">TurkColBERT: A benchmark of dense and late-interaction models for Turkish information retrieval</h3>
+          </div>
+          <figure class="col-c"><img class="obj" src="assets/objects/grid.webp" width="840" height="840" alt="Rendered object: a rippling grid of points" loading="lazy" decoding="async"></figure>
+          <div class="col-r">
+            <p class="b29">A 1.0M-parameter late-interaction model matches a dense encoder 600× its size.</p>
+            <div class="figure"><span class="fig-n">600×</span><span class="lbl">Size of the dense encoder it matches</span></div>
+            <p class="lbl muted">10 models · 5 Turkish datasets · sub-millisecond queries</p>
+          </div>
+        </div>
+        <div class="screen-foot">
+          <p class="lbl muted authors" lang="tr">ÖZAY EZERCELİ, MAHMOUD EL HUSSİENİ, SELVA TAŞ, REYHAN BAYRAKTAR, <span class="ember">FATMA BETÜL TERZİOĞLU</span>, YUSUF ÇELEBİ, YAĞIZ ASKER</p>
+          <a class="ul" href="https://arxiv.org/abs/2511.16528">Read the paper ↗</a>
+        </div>
+        <details class="more">
+          <summary class="ghost">Abstract</summary>
+          <p class="txt">A benchmark of ten models across five Turkish datasets spanning scientific, financial and argumentative domains, using a two-stage adaptation pipeline. The headline finding is a case for late interaction in lower-resource languages: a 1.0M-parameter late-interaction model matches a dense encoder 600× its size, with MUVERA+Rerank indexing delivering sub-millisecond query latency.</p>
+        </details>
+      </article>
+      <article class="screen" id="pub-4" aria-labelledby="pub-4-t">
+        <div class="screen-head"><span class="lbl">Publications</span><span class="lbl muted">04 / 04</span></div>
+        <div class="stage rise">
+          <div class="col-l">
+            <p class="lbl ember">arXiv:2509.17671 · September 2025</p>
+            <h3 class="h-title" id="pub-4-t">Turk-LettuceDetect: Hallucination detection models for Turkish RAG applications</h3>
+          </div>
+          <figure class="col-c"><img class="obj" src="assets/objects/span.webp" width="840" height="840" alt="Rendered object: a sphere of points with one band cut out" loading="lazy" decoding="async"></figure>
+          <div class="col-r">
+            <p class="b29">Hallucination detection for Turkish RAG, cheap enough to sit in a live pipeline.</p>
+            <div class="figure"><span class="fig-n">0.7266</span><span class="lbl">F1 · contexts up to 8,192 tokens</span></div>
+            <p class="lbl muted">17,790 instances · 3 encoder architectures</p>
+          </div>
+        </div>
+        <div class="screen-foot">
+          <p class="lbl muted authors" lang="tr">SELVA TAŞ, MAHMUT EL HUSEYNİ, ÖZAY EZERCELİ, REYHAN BAYRAKTAR, <span class="ember">FATMA BETÜL TERZİOĞLU</span></p>
+          <a class="ul" href="https://arxiv.org/abs/2509.17671">Read the paper ↗</a>
+        </div>
+        <details class="more">
+          <summary class="ghost">Abstract</summary>
+          <p class="txt">Hallucination detection for Turkish retrieval-augmented generation: three encoder architectures fine-tuned on a machine-translated RAGTruth corpus of 17,790 instances, with the best model reaching an F1 of 0.7266 over contexts up to 8,192 tokens while staying computationally cheap enough to sit in a live pipeline.</p>
+        </details>
+      </article>
   </section>
 
-  <!-- ============ RESEARCH ============ -->
-  <section class="band">
-    <div class="head">
-      <h2>Further applied research</h2>
-      <span class="count">Internal studies, unpublished</span>
+  <section id="work" data-nav="work" aria-labelledby="work-t">
+    <div class="screen" style="min-height:0; padding-bottom:0; padding-top:120px">
+      <div class="section-intro rise">
+        <h2 id="work-t">Selected work.</h2>
+        <p class="txt muted">Six of ~34 projects — from sole-authored systems to team platforms I led, most of them running in production.</p>
+      </div>
     </div>
-    <div class="research">
-      <div class="rcard">
-        <p class="field">Representation learning</p>
-        <h4>Retrieval &amp; translation models for Turkish</h4>
-        <p>
-          The model training behind the TurkColBERT benchmark above — late-interaction and compact
-          BERT-family retrieval models — together with a Turkish machine-translation model built
-          in the same period.
-        </p>
-      </div>
-      <div class="rcard">
-        <p class="field">Unsupervised structure</p>
-        <h4>Self-updating semantic space</h4>
-        <p>
-          A study in incremental clustering for text intelligence systems: how a semantic space
-          absorbs new documents without full recomputation, using community detection (Leiden) and
-          approximate-nearest-neighbour indexes, with the assignment-stability failure modes
-          characterized.
-        </p>
-      </div>
-      <div class="rcard">
-        <p class="field">Entity resolution</p>
-        <h4>Turkish entity resolution pipeline</h4>
-        <p>
-          An end-to-end arc from research to a debugged, tested pipeline, comparing compact static
-          embeddings (model2vec) against Turkish sentence-similarity models for resolving entities
-          across noisy legal text.
-        </p>
-      </div>
-      <div class="rcard">
-        <p class="field">Reproduction study</p>
-        <h4>Multi-agent synthetic data generation</h4>
-        <p>
-          A faithful reimplementation of a published multi-agent pipeline for generating tool-use
-          training trajectories — tool-spec generation, agent diversification, rubric tasks, a
-          user simulator against the agent and a tool-execution simulator, then judge-based
-          rejection sampling — with each module mapped to its section in the paper.
-        </p>
-      </div>
-      <div class="rcard">
-        <p class="field">Safety &amp; evaluation</p>
-        <h4>Guardrails evaluation arena</h4>
-        <p>
-          Dataset construction and evaluation comparing guardrail strategies across model families,
-          with Turkish coverage built through model translation and manual correction — the same
-          problem the Turk-LettuceDetect paper attacks from the hallucination side, since safety
-          tooling is overwhelmingly English-first.
-        </p>
-      </div>
-      <div class="rcard">
-        <p class="field">Benchmark design</p>
-        <h4>Turkish legal-AI benchmarks</h4>
-        <p>
-          Authored benchmark tasks for Turkish legal reasoning in a standard task format, and
-          bridged an internal legal knowledge-graph orchestrator to an external benchmark scored by
-          an independent model judge.
-        </p>
-      </div>
+      <article class="screen" id="work-1" aria-labelledby="work-1-t">
+        <div class="screen-head"><span class="lbl">Selected work</span><span class="lbl muted">01 / 06</span></div>
+        <div class="stage rise">
+          <div class="col-l">
+            <p class="lbl ember">Sole maintainer</p>
+            <h3 class="h-title" id="work-1-t">Production news intelligence pipeline</h3>
+            <dl class="facts"><div><dt class="lbl muted">Scope</dt><dd class="lbl">Architecture → production</dd></div><div><dt class="lbl muted">Sources</dt><dd class="lbl">~56 ingested</dd></div><div><dt class="lbl muted">Status</dt><dd class="lbl">Live, on schedule</dd></div></dl>
+          </div>
+          <figure class="col-c"><img class="obj" src="assets/objects/funnel.webp" width="840" height="840" alt="Rendered object: a funnel of particles narrowing to a point" loading="lazy" decoding="async"></figure>
+          <div class="col-r">
+            <p class="b29">Roughly 56 sources in, finished briefings out — unattended, on a daily, weekly and monthly cadence.</p>
+            <div class="callout"><p class="lbl muted">Design decision</p><p class="txt">A hard monthly inference budget with an automatic circuit-breaker is built into the pipeline, not bolted on afterwards.</p></div>
+          </div>
+        </div>
+        <div class="screen-foot">
+          <p class="lbl muted stack">Python · FastAPI · MongoDB · Playwright · staged LLM routing (DeepSeek, Gemini, Claude) · python-docx / PyMuPDF / WeasyPrint / python-pptx · Docker · Kubernetes · pytest</p>
+        </div>
+        <details class="more">
+          <summary class="ghost">Read more</summary>
+          <div class="cols">
+            <p class="txt">An end-to-end system that ingests roughly 56 sources across RSS, sitemaps and browser scraping, filters and summarizes them through staged language-model calls, deduplicates, persists to a document store, and delivers finished briefings through messaging, email, and an automatically typeset journal rendered to DOCX, PDF and slides. A separate control plane handles administration and monitoring.</p>
+            <p class="txt">I designed and built the whole system — ingestion, the model stages, persistence, per-stage cost accounting, every delivery channel, the document generator, and the containerized deployment. It ships with a full test suite and runs unattended on a daily, weekly and monthly cadence.</p>
+            <p class="txt">Design decision — A hard monthly inference budget with an automatic circuit-breaker is built into the pipeline, not bolted on afterwards. An LLM system without a cost ceiling is a liability in production, and the ceiling has to be a first-class component to be trusted.</p>
+          </div>
+        </details>
+      </article>
+      <article class="screen" id="work-2" aria-labelledby="work-2-t">
+        <div class="screen-head"><span class="lbl">Selected work</span><span class="lbl muted">02 / 06</span></div>
+        <div class="stage rise">
+          <div class="col-l">
+            <p class="lbl ember">Lead contributor</p>
+            <h3 class="h-title" id="work-2-t">Multi-agent platform for legal due diligence</h3>
+            <dl class="facts"><div><dt class="lbl muted">Team</dt><dd class="lbl">~5 engineers</dd></div><div><dt class="lbl muted">Evaluation</dt><dd class="lbl">External benchmark</dd></div><div><dt class="lbl muted">Domain</dt><dd class="lbl">Legal due diligence</dd></div></dl>
+          </div>
+          <figure class="col-c"><img class="obj" src="assets/objects/tree.webp" width="840" height="840" alt="Rendered object: a branching tree of nodes" loading="lazy" decoding="async"></figure>
+          <div class="col-r">
+            <p class="b29">An orchestrator splits a legal question; parallel subagents retrieve and draft cited subreports; a reviewer grounds every claim.</p>
+            <div class="callout"><p class="lbl muted">Result</p><p class="txt">Bridged the platform to an external legal-AI benchmark scored by an independent model judge — a measure we did not control.</p></div>
+          </div>
+        </div>
+        <div class="screen-foot">
+          <p class="lbl muted stack">Python · hierarchical agent orchestration · hybrid retrieval (dense + full-text with rank fusion) · sentence-transformers · FAISS · A2A protocol · OCR · LaTeX · Docker</p>
+        </div>
+        <details class="more">
+          <summary class="ghost">Read more</summary>
+          <div class="cols">
+            <p class="txt">A hierarchical retrieval-augmented system: an orchestrator decomposes a legal question into sub-tasks; parallel subagents retrieve over hybrid dense and full-text search and draft cited subreports; a reviewer agent grounds every claim against its citation; an aggregator merges the results; a report writer assembles the deliverable with a provenance map and a visualization of the agent tree.</p>
+            <p class="txt">My contributions centred on the parts that make it trustworthy and deployable: the citation and source-highlighting system, multi-tenant isolation across the backend, interface, pipeline and ontology layers, a restructured prompt-management scheme, embedding-model swaps with GPU support, authored analysis skills for contract comparison and case-law lookup, and the CI/CD pipeline.</p>
+            <p class="txt">Result — I bridged the platform to an external legal-AI benchmark scored by an independent model judge — replacing self-assessment with a measure we did not control.</p>
+          </div>
+        </details>
+      </article>
+      <article class="screen" id="work-3" aria-labelledby="work-3-t">
+        <div class="screen-head"><span class="lbl">Selected work</span><span class="lbl muted">03 / 06</span></div>
+        <div class="stage rise">
+          <div class="col-l">
+            <p class="lbl ember">Sole author</p>
+            <h3 class="h-title" id="work-3-t">Automated metadata standardization</h3>
+            <dl class="facts"><div><dt class="lbl muted">Scope</dt><dd class="lbl">Research → production</dd></div><div><dt class="lbl muted">Standard</dt><dd class="lbl">Dublin Core, 15-element</dd></div><div><dt class="lbl muted">Extension</dt><dd class="lbl">Knowledge graph</dd></div></dl>
+          </div>
+          <figure class="col-c"><img class="obj" src="assets/objects/clusters.webp" width="840" height="840" alt="Rendered object: fifteen clusters of points in a ring" loading="lazy" decoding="async"></figure>
+          <div class="col-r">
+            <p class="b29">Spreadsheets, PDF indexes and scanned catalogs in; standardized Dublin Core records out.</p>
+            <div class="callout"><p class="lbl muted">Pipeline</p><p class="txt">Extraction, semantic clustering, field cleaning, model enrichment and identifier filtering — then extended into a Neo4j knowledge graph.</p></div>
+          </div>
+        </div>
+        <div class="screen-foot">
+          <p class="lbl muted stack">Python · FastAPI · pydantic · sentence-transformers · FAISS · networkx · pandas · React 19 · TypeScript · Vite · Neo4j · pytest</p>
+        </div>
+        <details class="more">
+          <summary class="ghost">Read more</summary>
+          <div class="cols">
+            <p class="txt">A system that ingests heterogeneous documents — spreadsheets, PDF indexes, scanned record catalogs — extracts their core descriptive fields, enriches them with a language model, and emits standardized Dublin Core records through a seven-stage pipeline: extraction, semantic clustering, field cleaning, model enrichment, and identifier filtering.</p>
+            <p class="txt">I designed and built every component: the vector-based semantic clusterer, a hybrid rule/model field cleaner, an identifier filter that keeps dates and reference codes from polluting the clustering signal, and a clean-architecture refactor with a typed React front end. The work ran from open research through production deployment and testing, and was then extended into a Neo4j knowledge graph and delivered to the business.</p>
+          </div>
+        </details>
+      </article>
+      <article class="screen" id="work-4" aria-labelledby="work-4-t">
+        <div class="screen-head"><span class="lbl">Selected work</span><span class="lbl muted">04 / 06</span></div>
+        <div class="stage rise">
+          <div class="col-l">
+            <p class="lbl ember">Author</p>
+            <h3 class="h-title" id="work-4-t">Legal &amp; regulatory data infrastructure</h3>
+            <dl class="facts"><div><dt class="lbl muted">Span</dt><dd class="lbl">Longest-running work</dd></div><div><dt class="lbl muted">Coverage</dt><dd class="lbl">~50 institutions</dd></div><div><dt class="lbl muted">Reach</dt><dd class="lbl">National + international</dd></div></dl>
+          </div>
+          <figure class="col-c"><img class="obj" src="assets/objects/strata.webp" width="840" height="840" alt="Rendered object: a column of stacked layers" loading="lazy" decoding="async"></figure>
+          <div class="col-r">
+            <p class="b29">The ingestion layer every other system here stands on.</p>
+            <div class="callout"><p class="lbl muted">Coverage</p><p class="txt">Courts, parliament, national legislation, eight sector regulators, the European Court of Human Rights, UK legislation, academic libraries.</p></div>
+          </div>
+        </div>
+        <div class="screen-foot">
+          <p class="lbl muted stack">Python · MongoDB · Kafka · Docker Compose · FastAPI · BGE-M3 · FAISS · Celery + Redis · PyMuPDF / pdfplumber · Tesseract / Surya OCR · pytest</p>
+        </div>
+        <details class="more">
+          <summary class="ghost">Read more</summary>
+          <div class="cols">
+            <p class="txt">The ingestion layer every other system here stands on: roughly 50 source-specific crawlers spanning the Turkish Court of Cassation, Council of State, Constitutional Court, the Grand National Assembly, the national legislation database, the banking, capital markets, public procurement, revenue, energy, telecoms and central bank regulators, plus the European Court of Human Rights, UK legislation, and academic library and thesis databases.</p>
+            <p class="txt">Alongside it: a production-grade containerized regulatory crawler packaged as an installable module with a test suite and pre-commit hooks, and a multi-agent legal document intelligence platform running ingestion, chunking, embedding, hybrid retrieval and entity extraction — with cost control and a security layer designed in from the start.</p>
+          </div>
+        </details>
+      </article>
+      <article class="screen" id="work-5" aria-labelledby="work-5-t">
+        <div class="screen-head"><span class="lbl">Selected work</span><span class="lbl muted">05 / 06</span></div>
+        <div class="stage rise">
+          <div class="col-l">
+            <p class="lbl ember">Sole author</p>
+            <h3 class="h-title" id="work-5-t">Comparative retrieval &amp; model evaluation lab</h3>
+            <dl class="facts"><div><dt class="lbl muted">Architectures</dt><dd class="lbl">5 compared</dd></div><div><dt class="lbl muted">Backends</dt><dd class="lbl">5 model families</dd></div><div><dt class="lbl muted">Tracking</dt><dd class="lbl">MLflow · LaTeX reports</dd></div></dl>
+          </div>
+          <figure class="col-c"><img class="obj" src="assets/objects/pillars.webp" width="840" height="840" alt="Rendered object: five pillars of different heights" loading="lazy" decoding="async"></figure>
+          <div class="col-r">
+            <p class="b29">A standing environment for answering architecture questions with evidence.</p>
+            <div class="callout"><p class="lbl muted">Compared</p><p class="txt">Dense baseline, BM25, graph-RAG over Neo4j, agentic RAG, and a planner / retriever / critic / reflection framework.</p></div>
+          </div>
+        </div>
+        <div class="screen-foot">
+          <p class="lbl muted stack">FAISS · BM25 · Neo4j + Cypher · MLflow · LaTeX · pandas · multi-provider LLM routing</p>
+        </div>
+        <details class="more">
+          <summary class="ghost">Read more</summary>
+          <div class="cols">
+            <p class="txt">A standing environment for answering architecture questions with evidence. Five retrieval strategies implemented in parallel and benchmarked side by side: a naive dense baseline, a classical BM25 baseline, a graph-RAG variant over a Turkish legal database using Neo4j and Cypher, an agentic RAG, and an enterprise planner/retriever/critic/reflection framework — all tracked in MLflow with generated LaTeX reports.</p>
+            <p class="txt">Separately, a model-selection study comparing five backends across chat, tool selection, cited conclusions and artifact creation to settle a real product’s model choice on evidence rather than preference; a prompt-evaluation harness; and a head-to-head benchmark of two search-augmentation providers.</p>
+          </div>
+        </details>
+      </article>
+      <article class="screen" id="work-6" aria-labelledby="work-6-t">
+        <div class="screen-head"><span class="lbl">Selected work</span><span class="lbl muted">06 / 06</span></div>
+        <div class="stage rise">
+          <div class="col-l">
+            <p class="lbl ember">Sole author</p>
+            <h3 class="h-title" id="work-6-t">Long-context reasoning without retrieval</h3>
+            <dl class="facts"><div><dt class="lbl muted">Context</dt><dd class="lbl">196K tokens</dd></div><div><dt class="lbl muted">Corpus</dt><dd class="lbl">100 docs / session</dd></div><div><dt class="lbl muted">Retrieval</dt><dd class="lbl">None — by design</dd></div></dl>
+          </div>
+          <figure class="col-c"><img class="obj" src="assets/objects/scroll.webp" width="840" height="840" alt="Rendered object: a tightly rolled spiral sheet" loading="lazy" decoding="async"></figure>
+          <div class="col-r">
+            <p class="b29">A deliberate counter-experiment to the retrieval orthodoxy running through the rest of my work.</p>
+            <div class="callout"><p class="lbl muted">Why build it</p><p class="txt">RAG is the reflex answer for document reasoning, and reflexes deserve testing.</p></div>
+          </div>
+        </div>
+        <div class="screen-foot">
+          <p class="lbl muted stack">Python · FastAPI · tiktoken · sliding-window map-reduce · context compaction · async LLM routing</p>
+        </div>
+        <details class="more">
+          <summary class="ghost">Read more</summary>
+          <div class="cols">
+            <p class="txt">A deliberate counter-experiment to the retrieval orthodoxy running through the rest of my work: reasoning over up to 100 documents per session inside a 196K-token window with no embeddings and no vector database at all — sliding windows, map-reduce, context compaction, a hard cost ceiling, and a hallucination and citation guard.</p>
+            <p class="txt">Why build it — RAG is the reflex answer for document reasoning, and reflexes deserve testing. As context windows grow, the honest question is which problems still need retrieval — and that question is only answerable if someone builds the alternative and measures it.</p>
+          </div>
+        </details>
+      </article>
+  </section>
+
+  <section class="screen" id="research" data-nav="work" aria-labelledby="research-t">
+    <div class="screen-head"><span class="lbl">Further applied research</span><span class="lbl muted">Internal studies, unpublished</span></div>
+    <div class="rise" style="padding-top:41px">
+      <h2 id="research-t">Further applied research.</h2>
+      <ul class="grid3">
+        <li class="card"><p class="lbl ember">Representation learning</p><h3 class="h-card">Retrieval &amp; translation models for Turkish</h3><p class="txt muted">The model training behind the TurkColBERT benchmark — late-interaction and compact BERT-family retrieval models — together with a Turkish machine-translation model built in the same period.</p></li>
+        <li class="card"><p class="lbl ember">Unsupervised structure</p><h3 class="h-card">Self-updating semantic space</h3><p class="txt muted">Incremental clustering for text intelligence: how a semantic space absorbs new documents without full recomputation, using Leiden community detection and approximate-nearest-neighbour indexes, with the assignment-stability failure modes characterized.</p></li>
+        <li class="card"><p class="lbl ember">Entity resolution</p><h3 class="h-card">Turkish entity resolution pipeline</h3><p class="txt muted">An end-to-end arc from research to a debugged, tested pipeline, comparing compact static embeddings (model2vec) against Turkish sentence-similarity models for resolving entities across noisy legal text.</p></li>
+        <li class="card"><p class="lbl ember">Reproduction study</p><h3 class="h-card">Multi-agent synthetic data generation</h3><p class="txt muted">A faithful reimplementation of a published multi-agent pipeline for generating tool-use training trajectories — tool specs, agent diversification, rubric tasks, user and tool simulators, judge-based rejection sampling — each module mapped to its section in the paper.</p></li>
+        <li class="card"><p class="lbl ember">Safety &amp; evaluation</p><h3 class="h-card">Guardrails evaluation arena</h3><p class="txt muted">Dataset construction and evaluation comparing guardrail strategies across model families, with Turkish coverage built through model translation and manual correction — safety tooling is overwhelmingly English-first.</p></li>
+        <li class="card"><p class="lbl ember">Benchmark design</p><h3 class="h-card">Turkish legal-AI benchmarks</h3><p class="txt muted">Authored benchmark tasks for Turkish legal reasoning in a standard task format, and bridged an internal legal knowledge-graph orchestrator to an external benchmark scored by an independent model judge.</p></li>
+      </ul>
     </div>
   </section>
 
-  <!-- ============ TIMELINE ============ -->
-  <section class="band">
-    <div class="head">
-      <h2>Trajectory</h2>
-      <span class="count">2024 — 2026</span>
-    </div>
-
-    <div class="phase">
-      <div><p class="phase-n num">01</p></div>
-      <div>
-        <h4>Embedding &amp; retrieval foundations</h4>
-        <p class="when">2024</p>
-        <p>
-          Comparative analysis of data indexed into a search engine versus a vector database;
-          prepared a text-embedding model and <b>took the embedding service to production</b>;
-          developed a social-media classification model and trialed open-weight models on rented GPU
-          infrastructure. Infrastructure-level machine learning.
-        </p>
-      </div>
-    </div>
-
-    <div class="phase">
-      <div><p class="phase-n num">02</p></div>
-      <div>
-        <h4>Agentic research &amp; entity resolution</h4>
-        <p class="when">Early — mid 2025</p>
-        <p>
-          Function-calling benchmark research and evaluation of new tool-use models; agentic
-          architecture research for a query router; and a complete <b>entity resolution</b> arc from
-          literature review through pipeline, debugging and testing, comparing compact embedding
-          approaches for Turkish.
-        </p>
-      </div>
-    </div>
-
-    <div class="phase">
-      <div><p class="phase-n num">03</p></div>
-      <div>
-        <h4>Metadata, clustering &amp; model training</h4>
-        <p class="when">Mid — late 2025</p>
-        <p>
-          Metadata standardization carried from evaluation through validation to
-          <b>production deployment</b>, then extended into a knowledge graph. In parallel:
-          <b>retrieval model training</b>, a Turkish translation model, the incremental-clustering
-          study, the guardrails arena, workflow automation for an agent platform, and prompt
-          optimization research. My most productive period.
-        </p>
-      </div>
-    </div>
-
-    <div class="phase">
-      <div><p class="phase-n num">04</p></div>
-      <div>
-        <h4>Multi-agent platforms</h4>
-        <p class="when">Early — mid 2026</p>
-        <p>
-          Agent architecture proofs of concept and an <b>agent evaluation framework</b>; a case-law
-          reasoning use case built on court decisions; output-consistency detection; local
-          LLM benchmarking on specialized accelerators and on-premise model research; and validation
-          trials of several frontier model families for production use.
-        </p>
-      </div>
-    </div>
-
-    <div class="phase">
-      <div><p class="phase-n num">05</p></div>
-      <div>
-        <h4>Production systems &amp; interoperability</h4>
-        <p class="when">Current</p>
-        <p>
-          Deployment and automated distribution for the news intelligence pipeline;
-          <b>corpus-grounded tool routing</b> over the Model Context Protocol; making an external
-          legal benchmark scorable by an independent judge; agent-to-agent protocol and
-          self-improving agent memory research; and automated meeting summarization.
-        </p>
-      </div>
+  <section class="screen" id="trajectory" data-nav="work" aria-labelledby="trajectory-t">
+    <div class="screen-head"><span class="lbl">Trajectory</span><span class="lbl muted">2024 — 2026</span></div>
+    <div class="rise" style="padding-top:41px">
+      <h2 id="trajectory-t">Trajectory.</h2>
+      <ol class="timeline">
+        <li><span class="dot" aria-hidden="true"></span><span class="stat-n">01</span><span class="lbl muted">2024</span><h3 class="h-step">Embedding &amp; retrieval foundations</h3><p class="txt muted">Search engine vs. vector database analysis; prepared a text-embedding model and took the embedding service to production; a social-media classification model; open-weight models trialed on rented GPUs.</p></li>
+        <li><span class="dot" aria-hidden="true"></span><span class="stat-n">02</span><span class="lbl muted">Early — mid 2025</span><h3 class="h-step">Agentic research &amp; entity resolution</h3><p class="txt muted">Function-calling benchmark research and tool-use model evaluation; agentic architecture research for a query router; a complete entity-resolution arc from literature review to tested pipeline.</p></li>
+        <li><span class="dot" aria-hidden="true"></span><span class="stat-n">03</span><span class="lbl muted">Mid — late 2025</span><h3 class="h-step">Metadata, clustering &amp; model training</h3><p class="txt muted">Metadata standardization through to production and a knowledge graph; retrieval model training, a Turkish translation model, incremental clustering, the guardrails arena. My most productive period.</p></li>
+        <li><span class="dot" aria-hidden="true"></span><span class="stat-n">04</span><span class="lbl muted">Early — mid 2026</span><h3 class="h-step">Multi-agent platforms</h3><p class="txt muted">Agent architecture proofs of concept and an agent evaluation framework; a case-law reasoning use case; output-consistency detection; local LLM benchmarking on specialized accelerators; frontier-model validation trials.</p></li>
+        <li><span class="dot" aria-hidden="true"></span><span class="stat-n">05</span><span class="lbl muted">Current</span><h3 class="h-step">Production systems &amp; interoperability</h3><p class="txt muted">Deployment and distribution for the news pipeline; corpus-grounded tool routing over MCP; an external legal benchmark made scorable by an independent judge; A2A and agent-memory research; meeting summarization.</p></li>
+      </ol>
     </div>
   </section>
 
-  <!-- ============ SKILLS ============ -->
-  <section class="band">
-    <div class="head">
-      <h2>Technical scope</h2>
-      <span class="count">Applied in shipped work</span>
-    </div>
-    <div class="scroll">
-      <table>
-        <thead>
-          <tr><th style="width:12rem">Area</th><th>Technologies</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Languages</td><td class="t-mono">Python (primary) · TypeScript / JavaScript · SQL · LaTeX · Bash</td></tr>
-          <tr><td>LLM &amp; agent systems</td><td class="t-mono">Hierarchical multi-agent orchestration · Model Context Protocol (MCP) · agent-to-agent (A2A) protocol · function calling · prompt optimization · model-as-judge evaluation · agent memory · guardrails</td></tr>
-          <tr><td>Retrieval &amp; RAG</td><td class="t-mono">Dense / hybrid / graph / agentic RAG · FAISS · BM25 · full-text search with rank fusion · Qdrant · Elasticsearch · Neo4j + Cypher · reranking · chunking strategy · long-context reasoning</td></tr>
-          <tr><td>NLP &amp; modeling</td><td class="t-mono">Embeddings (BGE-M3, MiniLM, model2vec, Turkish STS models) · late-interaction retrieval (ColBERT) · BERT-family fine-tuning · entity resolution · incremental &amp; community-detection clustering · machine translation · guardrail models · OCR (vision-language, Tesseract, Surya)</td></tr>
-          <tr><td>Model families</td><td class="t-mono">Claude · Gemini · DeepSeek · MiniMax · Kimi · GLM · Qwen · Llama · open-weight self-hosted</td></tr>
-          <tr><td>Data &amp; storage</td><td class="t-mono">MongoDB · Qdrant · Neo4j · Elasticsearch · FAISS · SQLite · Kafka · Redis + Celery · pandas</td></tr>
-          <tr><td>Platform &amp; MLOps</td><td class="t-mono">Docker · Kubernetes · GitOps deployment · CI/CD · serverless (Modal) · rented + on-prem GPU · specialized accelerators · MLflow · scheduled workloads</td></tr>
-          <tr><td>HPC</td><td class="t-mono">Barcelona Supercomputing Center (BSC) — MareNostrum5, project member, 2025–2026</td></tr>
-          <tr><td>Web &amp; API</td><td class="t-mono">FastAPI · uvicorn · Streamlit · React 19 · Vite · Tailwind · Playwright · structured scraping</td></tr>
-          <tr><td>Document engineering</td><td class="t-mono">python-docx · PyMuPDF · WeasyPrint · python-pptx · pdfplumber · automated LaTeX report generation</td></tr>
-          <tr><td>Evaluation</td><td class="t-mono">Benchmark design · external benchmark integration · model bake-offs · synthetic data generation · rubric &amp; judge scoring · pytest</td></tr>
-          <tr><td>Domain</td><td class="t-mono">Turkish legal NLP · data protection law (KVKK / GDPR) · arbitration · regulatory monitoring · due diligence · Dublin Core metadata standards</td></tr>
-        </tbody>
-      </table>
+  <section class="screen" id="scope" data-nav="work" aria-labelledby="scope-t">
+    <div class="screen-head"><span class="lbl">Technical scope</span><span class="lbl muted">Applied in shipped work</span></div>
+    <div class="scope rise">
+      <div class="section-intro"><h2 id="scope-t">Technical scope.</h2></div>
+      <dl>
+        <div><dt class="lbl">Languages</dt><dd class="txt">Python (primary) · TypeScript / JavaScript · SQL · LaTeX · Bash</dd></div>
+        <div><dt class="lbl">LLM &amp; agent systems</dt><dd class="txt">Hierarchical multi-agent orchestration · MCP · A2A protocol · function calling · prompt optimization · model-as-judge evaluation · agent memory · guardrails</dd></div>
+        <div><dt class="lbl">Retrieval &amp; RAG</dt><dd class="txt">Dense / hybrid / graph / agentic RAG · FAISS · BM25 · rank fusion · Qdrant · Elasticsearch · Neo4j + Cypher · reranking · chunking · long-context reasoning</dd></div>
+        <div><dt class="lbl">NLP &amp; modeling</dt><dd class="txt">Embeddings (BGE-M3, MiniLM, model2vec, Turkish STS) · ColBERT · BERT-family fine-tuning · entity resolution · clustering · machine translation · guardrail models · OCR</dd></div>
+        <div><dt class="lbl">Model families</dt><dd class="txt">Claude · Gemini · DeepSeek · MiniMax · Kimi · GLM · Qwen · Llama · open-weight self-hosted</dd></div>
+        <div><dt class="lbl">Data &amp; storage</dt><dd class="txt">MongoDB · Qdrant · Neo4j · Elasticsearch · FAISS · SQLite · Kafka · Redis + Celery · pandas</dd></div>
+        <div><dt class="lbl">Platform &amp; MLOps</dt><dd class="txt">Docker · Kubernetes · GitOps · CI/CD · serverless (Modal) · rented + on-prem GPU · specialized accelerators · MLflow · scheduled workloads</dd></div>
+        <div><dt class="lbl">HPC</dt><dd class="txt">Barcelona Supercomputing Center (BSC) — MareNostrum5, project member, 2025–2026</dd></div>
+        <div><dt class="lbl">Web &amp; API</dt><dd class="txt">FastAPI · uvicorn · Streamlit · React 19 · Vite · Tailwind · Playwright · structured scraping</dd></div>
+        <div><dt class="lbl">Document engineering</dt><dd class="txt">python-docx · PyMuPDF · WeasyPrint · python-pptx · pdfplumber · automated LaTeX reports</dd></div>
+        <div><dt class="lbl">Evaluation</dt><dd class="txt">Benchmark design · external benchmark integration · model bake-offs · synthetic data · rubric &amp; judge scoring · pytest</dd></div>
+        <div><dt class="lbl">Domain</dt><dd class="txt">Turkish legal NLP · data protection law (KVKK / GDPR) · arbitration · regulatory monitoring · due diligence · Dublin Core</dd></div>
+      </dl>
     </div>
   </section>
 
-  <!-- ============ CONTACT ============ -->
-  <section class="contact">
-    <h2>Get in touch</h2>
-    <p>
-      Open to conversations about applied language-model research, legal NLP, multi-agent
-      architectures, and retrieval in under-resourced languages — from either the academic or the
-      commercial side.
-    </p>
-    <div class="contact-row">
-      <span>Email — <a href="mailto:betulterzioglu01@gmail.com"><b>betulterzioglu01@gmail.com</b></a></span>
-      <span>Scholar — <a href="https://scholar.google.com/citations?user=vBzzx-MAAAAJ&hl=en"><b>Publication list</b></a></span>
-      <span>GitHub — <a href="https://github.com/fbterzioglu"><b>fbterzioglu</b></a></span>
-      <span>Based in <b>Türkiye</b></span>
+  <section class="screen" id="contact" data-nav="contact" aria-labelledby="contact-t">
+    <div class="screen-head"><span class="lbl">Contact</span><span class="lbl muted">08</span></div>
+    <div class="stage rise">
+      <div class="col-l"><h2 id="contact-t">Get in touch.</h2></div>
+      <figure class="col-c"><img class="obj" src="assets/objects/trajectory-34.webp" width="840" height="840" alt="" loading="lazy" decoding="async"></figure>
+      <div class="col-r">
+        <p class="b29">Open to conversations about applied language-model research, legal NLP, multi-agent architectures, and retrieval in under-resourced languages — from either the academic or the commercial side.</p>
+        <p><a class="pill" href="mailto:betulterzioglu01@gmail.com">Email me</a></p>
+        <div class="contact-links">
+          <p class="lbl muted">betulterzioglu01@gmail.com</p>
+          <a class="ul" href="https://scholar.google.com/citations?user=vBzzx-MAAAAJ&amp;hl=en">Google Scholar ↗</a>
+          <a class="ul" href="https://github.com/fbterzioglu">GitHub — fbterzioglu ↗</a>
+        </div>
+      </div>
     </div>
   </section>
+</main>
 
-  <footer>
-    <span>Fatma Betül Terzioğlu</span>
-    <span>AI / ML Research &amp; Development</span>
-    <span>Portfolio 2026</span>
-  </footer>
-
-</div>
+<footer>
+  <p class="lbl" lang="tr">FATMA BETÜL TERZİOĞLU · AI / ML RESEARCH &amp; DEVELOPMENT · PORTFOLIO 2026</p>
+  <p class="lbl ember" lang="tr">BASED IN TÜRKİYE · OBJECTS RENDERED FROM CODE</p>
+</footer>
 
 <script>
-(function(){
-  var root = document.documentElement,
-      btn  = document.getElementById('themeToggle'),
-      lbl  = document.getElementById('themeLabel');
+(() => {
+  const root = document.documentElement;
+  root.classList.add('js');
 
-  function systemTheme(){
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-  }
-  function current(){
-    return root.getAttribute('data-theme') || systemTheme();
-  }
-  function apply(t){
-    root.setAttribute('data-theme', t);
-    lbl.textContent = (t === 'dark') ? 'Light' : 'Dark';
-    try { localStorage.setItem('theme', t); } catch (e) {}
-  }
+  const nav = document.querySelector('.nav');
+  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > window.innerHeight * 0.6);
+  onScroll(); window.addEventListener('scroll', onScroll, { passive: true });
 
-  var saved = null;
-  try { saved = localStorage.getItem('theme'); } catch (e) {}
-  if (saved === 'dark' || saved === 'light') apply(saved);
-  else lbl.textContent = (systemTheme() === 'dark') ? 'Light' : 'Dark';
+  if (!('IntersectionObserver' in window)) { document.querySelectorAll('.rise').forEach(el => el.classList.add('in')); return; }
 
-  btn.addEventListener('click', function(){
-    apply(current() === 'dark' ? 'light' : 'dark');
-  });
+  // entrance
+  const rise = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); rise.unobserve(e.target); } });
+  }, { rootMargin: '0px 0px -10% 0px' });
+  document.querySelectorAll('.rise').forEach(el => rise.observe(el));
 
-  // Follow the OS only while the visitor hasn't chosen for themselves.
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e){
-    var chosen = null;
-    try { chosen = localStorage.getItem('theme'); } catch (err) {}
-    if (!chosen) lbl.textContent = e.matches ? 'Light' : 'Dark';
-  });
-})();
-</script>
-<script>
-/* page-mascot 0.1.0 — MIT (c) Kamran Ahmed — https://koboyo.com/page-mascot
-   The published component is React; this is a faithful vanilla port of dist/mascot.js,
-   because this page is a single static file with no build step. */
-(function(){
-  var button = document.getElementById('mascot');
-  if (!button) return;
-
-  var DIRECTIONS = ['up-left','up','up-right','left','center','right','down-left','down','down-right'];
-  var REACTIONS  = ['blink','heart','sparkle','surprised','wink','bashful','sleepy','dizzy','delighted'];
-  // Clockwise from the right, matching atan2 with y pointing down.
-  var CLOCKWISE  = ['right','down-right','down','down-left','left','up-left','up','up-right'];
-
-  var SECTOR = (Math.PI * 2) / CLOCKWISE.length,
-      HYSTERESIS = 0.12,
-      DEAD_ZONE = 70,
-      PAYOFFS = ['heart','sparkle','delighted'],
-      BOOP_PAYOFF = 120, BOOP_END = 560, SQUASH_MS = 420,
-      DIZZY_AFTER = 4, DIZZY_WINDOW = 1600, DIZZY_END = 1100;
-
-  var SQUASH = [
-    { transform:'scale(1, 1)', easing:'ease-in' },
-    { transform:'scale(1.10, 0.86)', offset:0.18, easing:'ease-out' },
-    { transform:'scale(0.95, 1.08)', offset:0.45, easing:'ease-in-out' },
-    { transform:'scale(1.03, 0.97)', offset:0.72, easing:'ease-in-out' },
-    { transform:'scale(1, 1)' }
-  ];
-
-  var body     = button.querySelector('.mascot-body'),
-      dirLayer = button.querySelector('[data-sheet="directions"]'),
-      reaLayer = button.querySelector('[data-sheet="reactions"]');
-
-  // background-size 300% makes each cell a clean 0/50/100% step on both axes.
-  function cell(el, index){
-    el.style.backgroundPosition = (index % 3) * 50 + '% ' + Math.floor(index / 3) * 50 + '%';
-  }
-  function wrap(angle){ return Math.atan2(Math.sin(angle), Math.cos(angle)); }
-
-  function setDirection(name){ cell(dirLayer, DIRECTIONS.indexOf(name)); }
-  function setReaction(name){
-    cell(reaLayer, REACTIONS.indexOf(name == null ? 'blink' : name));
-    dirLayer.style.opacity = name ? '0' : '1';
-    reaLayer.style.opacity = name ? '1' : '0';
-  }
-  setDirection('center');
-  setReaction(null);
-
-  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-    var sector = -1, pointer = null;
-
-    var aim = function(){
-      if (!pointer) return;
-      var box = button.getBoundingClientRect();
-      var dx = pointer.x - (box.left + box.width / 2);
-      var dy = pointer.y - (box.top + box.height / 2);
-      if (Math.hypot(dx, dy) < DEAD_ZONE) { sector = -1; setDirection('center'); return; }
-      // Hold the current sector until the pointer is well past its edge.
-      var angle = Math.atan2(dy, dx);
-      if (sector !== -1 && Math.abs(wrap(angle - sector * SECTOR)) < SECTOR / 2 + HYSTERESIS) return;
-      sector = (Math.round(angle / SECTOR) + CLOCKWISE.length) % CLOCKWISE.length;
-      setDirection(CLOCKWISE[sector]);
-    };
-
-    window.addEventListener('pointermove', function(e){
-      pointer = { x:e.clientX, y:e.clientY };
-      aim();
-    }, { passive:true });
-    window.addEventListener('scroll', aim, { passive:true });
-  }
-
-  var timers = [], boops = { count:0, at:0 };
-
-  button.addEventListener('click', function(){
-    timers.forEach(window.clearTimeout);
-    timers = [];
-    var later = function(ms, next){
-      timers.push(window.setTimeout(function(){ setReaction(next); }, ms));
-    };
-
-    var now = Date.now();
-    boops.count = (now - boops.at < DIZZY_WINDOW) ? boops.count + 1 : 1;
-    boops.at = now;
-
-    if (boops.count >= DIZZY_AFTER) {
-      boops.count = 0;
-      setReaction('dizzy');
-      later(DIZZY_END, null);
-    } else {
-      setReaction('blink');
-      later(BOOP_PAYOFF, PAYOFFS[(boops.count - 1) % PAYOFFS.length]);
-      later(BOOP_END, null);
-    }
-
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    // Per-keyframe easing with the effect itself linear: an easing on the effect
-    // would reinterpret every offset and front-load the whole bounce.
-    if (body.animate) body.animate(SQUASH, { duration:SQUASH_MS, easing:'linear' });
-  });
+  // active nav item — dashed underline follows the section in view
+  const links = new Map([...document.querySelectorAll('.nav a[data-section]')].map(a => [a.dataset.section, a]));
+  const spy = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      links.forEach(a => a.removeAttribute('aria-current'));
+      const a = links.get(e.target.dataset.nav); if (a) a.setAttribute('aria-current', 'true');
+    });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  document.querySelectorAll('[data-nav]').forEach(s => spy.observe(s));
 })();
 </script>
 </body>

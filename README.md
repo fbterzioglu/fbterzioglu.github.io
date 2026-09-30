@@ -17,19 +17,24 @@ Full list on [Google Scholar](https://scholar.google.com/citations?user=vBzzx-MA
 
 ## About this site
 
-A single self-contained `index.html` — no build step, no dependencies, no external
-requests. All CSS and JavaScript are inline; the only assets are the page itself and
-an Open Graph card.
+A single `index.html` with inline CSS and JavaScript — no build step, no framework, no
+external requests. The design is a dark "darkroom" editorial: warm near-black canvas,
+cream uppercase type, and one rendered object per section standing in for each paper
+or project.
 
-| File | Purpose |
+| Path | Purpose |
 |---|---|
 | `index.html` | The entire site |
+| `assets/hero-*.webp` | Hero still life (1200w / 2400w), rendered from code |
+| `assets/objects/*.webp` | Per-section objects — particle renders, one per paper / project |
+| `assets/fonts/InterVariable.woff2` | Inter, self-hosted (SIL OFL, see `Inter-LICENSE.txt`) |
 | `og.png` | Social preview card (1200×630) |
 | `.nojekyll` | Serve files verbatim; skip the Jekyll pipeline |
 
-Typography uses system serif and monospace stacks rather than web fonts, so the page
-renders instantly and works offline. Light and dark themes follow the visitor's system
-preference, with a manual toggle that persists to `localStorage`.
+Long-form text for each paper and project sits behind native `<details>` disclosures, so
+everything stays readable without JavaScript. The script only adds the nav background on
+scroll, the active-section underline and a quiet entrance fade (disabled under
+`prefers-reduced-motion`).
 
 To preview locally:
 
