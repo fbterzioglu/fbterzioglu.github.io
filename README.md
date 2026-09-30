@@ -26,15 +26,19 @@ or project.
 |---|---|
 | `index.html` | The entire site |
 | `assets/hero-*.webp` | Hero still life (1200w / 2400w), rendered from code |
-| `assets/objects/*.webp` | Per-section objects — particle renders, one per paper / project |
+| `assets/objects/*.webp` | Stills of the per-section objects — layout placeholders and the no-WebGL fallback |
 | `assets/fonts/InterVariable.woff2` | Inter, self-hosted (SIL OFL, see `Inter-LICENSE.txt`) |
 | `og.png` | Social preview card (1200×630) |
 | `.nojekyll` | Serve files verbatim; skip the Jekyll pipeline |
 
 Long-form text for each paper and project sits behind native `<details>` disclosures, so
-everything stays readable without JavaScript. The script only adds the nav background on
-scroll, the active-section underline and a quiet entrance fade (disabled under
-`prefers-reduced-motion`).
+everything stays readable without JavaScript.
+
+The objects are live: a small inline WebGL renderer (no library) generates each point
+cloud procedurally and draws it into its slot through one fixed canvas, turning with
+scroll and pointer. Without WebGL, or under `prefers-reduced-motion`, the stills show
+instead. The rest of the script adds the nav background on scroll, the active-section
+underline and a quiet entrance fade.
 
 To preview locally:
 

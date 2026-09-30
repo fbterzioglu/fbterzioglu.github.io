@@ -169,6 +169,10 @@
   footer > p{ padding-top:18px; border-top:1px dashed var(--cork); flex:1; }
   footer > p + p{ text-align:right; }
 
+  /* live objects: one fixed WebGL layer draws into each slot; the still stays as layout + fallback */
+  .gl-layer{ position:fixed; inset:0; width:100%; height:100%; z-index:1; pointer-events:none; }
+  .gl .col-c[data-obj] img{ visibility:hidden; }
+
   /* entrance — quiet, and off for anyone who asks */
   @media (prefers-reduced-motion:no-preference){
     .js .rise{ opacity:0; transform:translateY(14px); transition:opacity .9s ease, transform .9s ease; }
@@ -254,7 +258,7 @@
         <p class="lbl ember">Applied LLM systems</p>
         <h2 id="intro-t">Built for a domain that punishes hand-waving.</h2>
       </div>
-      <figure class="col-c"><img class="obj" src="assets/objects/trajectory.webp" width="840" height="840" alt="Rendered object: a coiled trajectory of 36 points, 13 of them highlighted" decoding="async"></figure>
+      <figure class="col-c" data-obj="trajectory"><img class="obj" src="assets/objects/trajectory.webp" width="840" height="840" alt="Rendered object: a coiled trajectory of 36 points, 13 of them highlighted" decoding="async"></figure>
       <div class="col-r">
         <p class="b29">Law, in a language most models were not designed for.</p>
         <p class="txt muted">The work runs from embedding and retrieval infrastructure, through entity resolution and metadata standardization, to multi-agent platforms and production pipelines serving real users.</p>
@@ -270,7 +274,7 @@
         <p class="lbl ember">Profile</p>
         <h2 id="profile-t">A method, not a technology.</h2>
       </div>
-      <figure class="col-c"><img class="obj" src="assets/objects/trajectory-34.webp" width="840" height="840" alt="The same trajectory seen from a three-quarter angle" loading="lazy" decoding="async"></figure>
+      <figure class="col-c" data-obj="trajectory-34"><img class="obj" src="assets/objects/trajectory-34.webp" width="840" height="840" alt="The same trajectory seen from a three-quarter angle" loading="lazy" decoding="async"></figure>
       <div class="col-r">
         <p class="b29">I build the evaluation harness before I commit to an architecture. Then I carry the answer into production.</p>
         <p class="txt muted">Sole author of six focused systems; lead contributor on larger team platforms.</p>
@@ -301,7 +305,7 @@
             <p class="lbl ember">arXiv:2604.19321 · April 2026</p>
             <h3 class="h-title" id="pub-1-t">RDP LoRA: Geometry-driven identification for parameter-efficient adaptation in large language models</h3>
           </div>
-          <figure class="col-c"><img class="obj" src="assets/objects/trajectory.webp" width="840" height="840" alt="Rendered object: a coiled trajectory of 36 points, 13 of them highlighted" loading="lazy" decoding="async"></figure>
+          <figure class="col-c" data-obj="trajectory"><img class="obj" src="assets/objects/trajectory.webp" width="840" height="840" alt="Rendered object: a coiled trajectory of 36 points, 13 of them highlighted" loading="lazy" decoding="async"></figure>
           <div class="col-r">
             <p class="b29">Thirteen geometrically selected layers beat full 36-layer adaptation.</p>
             <div class="figure"><span class="fig-n">81.67%</span><span class="lbl">MMLU-Math, Qwen3-8B-Base</span></div>
@@ -324,7 +328,7 @@
             <p class="lbl ember">SSRN 6919461 · 2026</p>
             <h3 class="h-title" id="pub-2-t">Agentology: Ontology-driven operational environments for multi-agent systems</h3>
           </div>
-          <figure class="col-c"><img class="obj" src="assets/objects/ontology.webp" width="840" height="840" alt="Rendered object: a lattice of nodes joined by arcs on a sphere" loading="lazy" decoding="async"></figure>
+          <figure class="col-c" data-obj="ontology"><img class="obj" src="assets/objects/ontology.webp" width="840" height="840" alt="Rendered object: a lattice of nodes joined by arcs on a sphere" loading="lazy" decoding="async"></figure>
           <div class="col-r">
             <p class="b29">Ontology-driven operational environments as a structuring principle for multi-agent systems.</p>
             <p class="lbl muted">The conceptual counterpart to the agent platforms in Selected work</p>
@@ -346,7 +350,7 @@
             <p class="lbl ember">arXiv:2511.16528 · November 2025</p>
             <h3 class="h-title" id="pub-3-t">TurkColBERT: A benchmark of dense and late-interaction models for Turkish information retrieval</h3>
           </div>
-          <figure class="col-c"><img class="obj" src="assets/objects/grid.webp" width="840" height="840" alt="Rendered object: a rippling grid of points" loading="lazy" decoding="async"></figure>
+          <figure class="col-c" data-obj="grid"><img class="obj" src="assets/objects/grid.webp" width="840" height="840" alt="Rendered object: a rippling grid of points" loading="lazy" decoding="async"></figure>
           <div class="col-r">
             <p class="b29">A 1.0M-parameter late-interaction model matches a dense encoder 600× its size.</p>
             <div class="figure"><span class="fig-n">600×</span><span class="lbl">Size of the dense encoder it matches</span></div>
@@ -369,7 +373,7 @@
             <p class="lbl ember">arXiv:2509.17671 · September 2025</p>
             <h3 class="h-title" id="pub-4-t">Turk-LettuceDetect: Hallucination detection models for Turkish RAG applications</h3>
           </div>
-          <figure class="col-c"><img class="obj" src="assets/objects/span.webp" width="840" height="840" alt="Rendered object: a sphere of points with one band cut out" loading="lazy" decoding="async"></figure>
+          <figure class="col-c" data-obj="span"><img class="obj" src="assets/objects/span.webp" width="840" height="840" alt="Rendered object: a sphere of points with one band cut out" loading="lazy" decoding="async"></figure>
           <div class="col-r">
             <p class="b29">Hallucination detection for Turkish RAG, cheap enough to sit in a live pipeline.</p>
             <div class="figure"><span class="fig-n">0.7266</span><span class="lbl">F1 · contexts up to 8,192 tokens</span></div>
@@ -402,7 +406,7 @@
             <h3 class="h-title" id="work-1-t">Production news intelligence pipeline</h3>
             <dl class="facts"><div><dt class="lbl muted">Scope</dt><dd class="lbl">Architecture → production</dd></div><div><dt class="lbl muted">Sources</dt><dd class="lbl">~56 ingested</dd></div><div><dt class="lbl muted">Status</dt><dd class="lbl">Live, on schedule</dd></div></dl>
           </div>
-          <figure class="col-c"><img class="obj" src="assets/objects/funnel.webp" width="840" height="840" alt="Rendered object: a funnel of particles narrowing to a point" loading="lazy" decoding="async"></figure>
+          <figure class="col-c" data-obj="funnel"><img class="obj" src="assets/objects/funnel.webp" width="840" height="840" alt="Rendered object: a funnel of particles narrowing to a point" loading="lazy" decoding="async"></figure>
           <div class="col-r">
             <p class="b29">Roughly 56 sources in, finished briefings out — unattended, on a daily, weekly and monthly cadence.</p>
             <div class="callout"><p class="lbl muted">Design decision</p><p class="txt">A hard monthly inference budget with an automatic circuit-breaker is built into the pipeline, not bolted on afterwards.</p></div>
@@ -428,7 +432,7 @@
             <h3 class="h-title" id="work-2-t">Multi-agent platform for legal due diligence</h3>
             <dl class="facts"><div><dt class="lbl muted">Team</dt><dd class="lbl">~5 engineers</dd></div><div><dt class="lbl muted">Evaluation</dt><dd class="lbl">External benchmark</dd></div><div><dt class="lbl muted">Domain</dt><dd class="lbl">Legal due diligence</dd></div></dl>
           </div>
-          <figure class="col-c"><img class="obj" src="assets/objects/tree.webp" width="840" height="840" alt="Rendered object: a branching tree of nodes" loading="lazy" decoding="async"></figure>
+          <figure class="col-c" data-obj="tree"><img class="obj" src="assets/objects/tree.webp" width="840" height="840" alt="Rendered object: a branching tree of nodes" loading="lazy" decoding="async"></figure>
           <div class="col-r">
             <p class="b29">An orchestrator splits a legal question; parallel subagents retrieve and draft cited subreports; a reviewer grounds every claim.</p>
             <div class="callout"><p class="lbl muted">Result</p><p class="txt">Bridged the platform to an external legal-AI benchmark scored by an independent model judge — a measure we did not control.</p></div>
@@ -454,7 +458,7 @@
             <h3 class="h-title" id="work-3-t">Automated metadata standardization</h3>
             <dl class="facts"><div><dt class="lbl muted">Scope</dt><dd class="lbl">Research → production</dd></div><div><dt class="lbl muted">Standard</dt><dd class="lbl">Dublin Core, 15-element</dd></div><div><dt class="lbl muted">Extension</dt><dd class="lbl">Knowledge graph</dd></div></dl>
           </div>
-          <figure class="col-c"><img class="obj" src="assets/objects/clusters.webp" width="840" height="840" alt="Rendered object: fifteen clusters of points in a ring" loading="lazy" decoding="async"></figure>
+          <figure class="col-c" data-obj="clusters"><img class="obj" src="assets/objects/clusters.webp" width="840" height="840" alt="Rendered object: fifteen clusters of points in a ring" loading="lazy" decoding="async"></figure>
           <div class="col-r">
             <p class="b29">Spreadsheets, PDF indexes and scanned catalogs in; standardized Dublin Core records out.</p>
             <div class="callout"><p class="lbl muted">Pipeline</p><p class="txt">Extraction, semantic clustering, field cleaning, model enrichment and identifier filtering — then extended into a Neo4j knowledge graph.</p></div>
@@ -479,7 +483,7 @@
             <h3 class="h-title" id="work-4-t">Legal &amp; regulatory data infrastructure</h3>
             <dl class="facts"><div><dt class="lbl muted">Span</dt><dd class="lbl">Longest-running work</dd></div><div><dt class="lbl muted">Coverage</dt><dd class="lbl">~50 institutions</dd></div><div><dt class="lbl muted">Reach</dt><dd class="lbl">National + international</dd></div></dl>
           </div>
-          <figure class="col-c"><img class="obj" src="assets/objects/strata.webp" width="840" height="840" alt="Rendered object: a column of stacked layers" loading="lazy" decoding="async"></figure>
+          <figure class="col-c" data-obj="strata"><img class="obj" src="assets/objects/strata.webp" width="840" height="840" alt="Rendered object: a column of stacked layers" loading="lazy" decoding="async"></figure>
           <div class="col-r">
             <p class="b29">The ingestion layer every other system here stands on.</p>
             <div class="callout"><p class="lbl muted">Coverage</p><p class="txt">Courts, parliament, national legislation, eight sector regulators, the European Court of Human Rights, UK legislation, academic libraries.</p></div>
@@ -504,7 +508,7 @@
             <h3 class="h-title" id="work-5-t">Comparative retrieval &amp; model evaluation lab</h3>
             <dl class="facts"><div><dt class="lbl muted">Architectures</dt><dd class="lbl">5 compared</dd></div><div><dt class="lbl muted">Backends</dt><dd class="lbl">5 model families</dd></div><div><dt class="lbl muted">Tracking</dt><dd class="lbl">MLflow · LaTeX reports</dd></div></dl>
           </div>
-          <figure class="col-c"><img class="obj" src="assets/objects/pillars.webp" width="840" height="840" alt="Rendered object: five pillars of different heights" loading="lazy" decoding="async"></figure>
+          <figure class="col-c" data-obj="pillars"><img class="obj" src="assets/objects/pillars.webp" width="840" height="840" alt="Rendered object: five pillars of different heights" loading="lazy" decoding="async"></figure>
           <div class="col-r">
             <p class="b29">A standing environment for answering architecture questions with evidence.</p>
             <div class="callout"><p class="lbl muted">Compared</p><p class="txt">Dense baseline, BM25, graph-RAG over Neo4j, agentic RAG, and a planner / retriever / critic / reflection framework.</p></div>
@@ -529,7 +533,7 @@
             <h3 class="h-title" id="work-6-t">Long-context reasoning without retrieval</h3>
             <dl class="facts"><div><dt class="lbl muted">Context</dt><dd class="lbl">196K tokens</dd></div><div><dt class="lbl muted">Corpus</dt><dd class="lbl">100 docs / session</dd></div><div><dt class="lbl muted">Retrieval</dt><dd class="lbl">None — by design</dd></div></dl>
           </div>
-          <figure class="col-c"><img class="obj" src="assets/objects/scroll.webp" width="840" height="840" alt="Rendered object: a tightly rolled spiral sheet" loading="lazy" decoding="async"></figure>
+          <figure class="col-c" data-obj="scroll"><img class="obj" src="assets/objects/scroll.webp" width="840" height="840" alt="Rendered object: a tightly rolled spiral sheet" loading="lazy" decoding="async"></figure>
           <div class="col-r">
             <p class="b29">A deliberate counter-experiment to the retrieval orthodoxy running through the rest of my work.</p>
             <div class="callout"><p class="lbl muted">Why build it</p><p class="txt">RAG is the reflex answer for document reasoning, and reflexes deserve testing.</p></div>
@@ -602,7 +606,7 @@
     <div class="screen-head"><span class="lbl">Contact</span><span class="lbl muted">08</span></div>
     <div class="stage rise">
       <div class="col-l"><h2 id="contact-t">Get in touch.</h2></div>
-      <figure class="col-c"><img class="obj" src="assets/objects/trajectory-34.webp" width="840" height="840" alt="" loading="lazy" decoding="async"></figure>
+      <figure class="col-c" data-obj="trajectory-34"><img class="obj" src="assets/objects/trajectory-34.webp" width="840" height="840" alt="" loading="lazy" decoding="async"></figure>
       <div class="col-r">
         <p class="b29">Open to conversations about applied language-model research, legal NLP, multi-agent architectures, and retrieval in under-resourced languages — from either the academic or the commercial side.</p>
         <p><a class="pill" href="mailto:betulterzioglu01@gmail.com">Email me</a></p>
@@ -648,6 +652,220 @@
     });
   }, { rootMargin: '-45% 0px -50% 0px' });
   document.querySelectorAll('[data-nav]').forEach(s => spy.observe(s));
+})();
+</script>
+<script>
+// Live objects — each .col-c[data-obj] slot gets a point cloud drawn into one fixed WebGL canvas.
+// The .webp inside the slot stays as the fallback (no WebGL, reduced motion, or a context loss).
+(() => {
+  const slots = [...document.querySelectorAll('.col-c[data-obj]')];
+  if (!slots.length || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const canvas = document.createElement('canvas');
+  canvas.className = 'gl-layer'; canvas.setAttribute('aria-hidden', 'true');
+  const gl = canvas.getContext('webgl', { alpha: true, premultipliedAlpha: true, antialias: false });
+  if (!gl) return;
+  document.body.appendChild(canvas);
+  document.documentElement.classList.add('gl');
+
+  const small = matchMedia('(max-width: 720px)').matches;
+  const DENSITY = small ? 0.55 : 1;
+
+  // ---------------------------------------------------------------- point sets
+  const rng = (seed) => () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+  function Cloud(seed) {
+    const r = rng(seed), pts = [];
+    const nrm = () => Math.sqrt(-2 * Math.log(r() + 1e-9)) * Math.cos(6.2831853 * r());
+    const unit = () => { let x = nrm(), y = nrm(), z = nrm(); const l = Math.hypot(x, y, z) || 1; return [x / l, y / l, z / l]; };
+    const add = (x, y, z, w) => pts.push(x, y, z, w);
+    const n = (k) => Math.max(1, Math.round(k * DENSITY));
+    return {
+      r, nrm, unit, pts,
+      shell(c, k, rad, w) { for (let i = 0; i < n(k); i++) { const u = unit(); add(c[0] + u[0] * rad, c[1] + u[1] * rad, c[2] + u[2] * rad, w); } },
+      ball(c, k, rad, w) { for (let i = 0; i < n(k); i++) { const u = unit(), s = rad * Math.cbrt(r()); add(c[0] + u[0] * s, c[1] + u[1] * s, c[2] + u[2] * s, w); } },
+      tube(curve, k, rad, w) {
+        for (let i = 0; i < n(k); i++) {
+          const j = Math.floor(r() * (curve.length - 1)), f = r(), a = curve[j], b = curve[j + 1], u = unit(), s = rad * Math.sqrt(r());
+          add(a[0] + (b[0] - a[0]) * f + u[0] * s, a[1] + (b[1] - a[1]) * f + u[1] * s, a[2] + (b[2] - a[2]) * f + u[2] * s, w);
+        }
+      },
+      add, n,
+    };
+  }
+  const lerpArc = (a, b, k, sphere) => Array.from({ length: k }, (_, i) => {
+    const t = i / (k - 1); let p = [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t];
+    if (sphere) { const l = Math.hypot(...p) || 1; p = p.map(v => v / l); }
+    return p;
+  });
+
+  const MAKERS = {
+    trajectory(C) {
+      const T = Array.from({ length: 36 }, (_, i) => { const s = i / 35; return [Math.sin(s * 8.5) * (1 - 0.45 * s), (s - 0.5) * 2.4, Math.cos(s * 8.5) * (1 - 0.45 * s)]; });
+      const sel = new Set([0, 2, 4, 7, 9, 12, 15, 18, 22, 26, 29, 32, 35]);
+      C.tube(T, 16000, 0.022, 0.55);
+      T.forEach((p, i) => { if (sel.has(i)) { C.shell(p, 1100, 0.07, 1); C.ball(p, 500, 0.22, 0.07); } else C.shell(p, 300, 0.035, 0.6); });
+    },
+    ontology(C) {
+      const N = Array.from({ length: 22 }, () => C.unit());
+      N.forEach((p, i) => {
+        C.shell(p, 420, 0.06, 1);
+        N.map((q, j) => [Math.hypot(p[0] - q[0], p[1] - q[1], p[2] - q[2]), j]).sort((a, b) => a[0] - b[0]).slice(1, 4)
+          .forEach(([, j]) => C.tube(lerpArc(p, N[j], 40, true), 380, 0.008, 0.5));
+      });
+      C.shell([0, 0, 0], 5000, 1, 0.12);
+    },
+    grid(C) {
+      const G = 56;
+      for (let i = 0; i < G; i++) for (let j = 0; j < G; j++) {
+        const x = -1 + 2 * i / (G - 1), y = -1 + 2 * j / (G - 1);
+        const z = 0.35 * Math.exp(-((x - 0.3) ** 2 + (y + 0.2) ** 2) * 4) + 0.2 * Math.sin(x * 3) * Math.cos(y * 2.5);
+        C.ball([x, z, y], 7, 0.012, 0.55 + 1.6 * Math.max(z, 0));
+      }
+    },
+    span(C) {
+      for (let i = 0; i < C.n(34000); i++) {
+        const u = C.unit(), lat = u[1];
+        if (lat > 0.18 && lat < 0.34) continue;
+        const s = 1 + C.nrm() * 0.01;
+        C.pts.push(u[0] * s, u[1] * s, u[2] * s, lat > 0.34 && lat < 0.4 ? 1.6 : 0.42);
+      }
+    },
+    funnel(C) {
+      for (let i = 0; i < C.n(32000); i++) {
+        const t = C.r(), a = C.r() * 6.2831853 + t * 9, rad = 0.12 + 0.9 * t ** 1.6;
+        C.add(Math.cos(a) * rad + C.nrm() * 0.01, (t - 0.5) * 2, Math.sin(a) * rad + C.nrm() * 0.01, 0.45);
+      }
+    },
+    tree(C) {
+      const br = (p, depth, L) => {
+        C.shell(p, depth < 2 ? 420 : 170, depth === 0 ? 0.07 : 0.045, 1);
+        if (depth === 3) return;
+        const k = depth === 0 ? 4 : 3;
+        for (let i = 0; i < k; i++) {
+          const a = i / k * 6.2831853 + depth, d = [Math.cos(a) * 0.8, -1, Math.sin(a) * 0.8], l = Math.hypot(...d);
+          const q = [p[0] + d[0] / l * L, p[1] + d[1] / l * L, p[2] + d[2] / l * L];
+          C.tube([p, q], 220, 0.006, 0.5); br(q, depth + 1, L * 0.62);
+        }
+      };
+      br([0, 1.1, 0], 0, 0.95);
+    },
+    clusters(C) {
+      for (let i = 0; i < 15; i++) {
+        const a = i / 15 * 6.2831853, c = [Math.cos(a) * 0.9, Math.sin(a * 2) * 0.25, Math.sin(a) * 0.9], sd = 0.05 * (0.7 + C.r()), k = C.n(900 + C.r() * 1300);
+        for (let j = 0; j < k; j++) C.add(c[0] + C.nrm() * sd, c[1] + C.nrm() * sd, c[2] + C.nrm() * sd, 0.75);
+      }
+      for (let j = 0; j < C.n(3000); j++) C.add(C.nrm() * 0.35, C.nrm() * 0.35, C.nrm() * 0.35, 0.12);
+    },
+    strata(C) {
+      for (let i = 0; i < 50; i++) {
+        const y = -1 + i * 0.04, R = 0.55 + 0.12 * Math.sin(i * 0.7) + C.r() * 0.08;
+        for (let j = 0; j < C.n(620); j++) { const a = C.r() * 6.2831853, rr = R * Math.sqrt(C.r()) * 0.3 + R * 0.7; C.add(Math.cos(a) * rr, y + C.nrm() * 0.003, Math.sin(a) * rr, 0.4); }
+      }
+    },
+    pillars(C) {
+      [0.9, 1.3, 1.7, 1.15, 1.55].forEach((h, i) => {
+        const x = -0.8 + i * 0.4;
+        for (let j = 0; j < C.n(4200 * h); j++) C.add(x + C.nrm() * 0.05, -1 + C.r() * h, C.nrm() * 0.05, 0.5);
+        C.shell([x, -1 + h + 0.08, 0], 420, 0.05, 1);
+      });
+    },
+    scroll(C) {
+      for (let i = 0; i < C.n(34000); i++) {
+        const t = C.r(), a = t * 6.2831853 * 4.5, rad = 0.25 + 0.7 * t;
+        C.add(Math.cos(a) * rad, (C.r() - 0.5) * 1.9, Math.sin(a) * rad, 0.38);
+      }
+    },
+  };
+  // base orientation per object (x, y, z) — matches the stills
+  const POSE = {
+    trajectory: [0.35, 0.3, -0.35], 'trajectory-34': [1.2, 0.8, 0.2], ontology: [0.4, 0.5, 0], grid: [0.55, 0.7, 0],
+    span: [0.35, 0.4, 0], funnel: [0.45, 0.2, 0], tree: [0.35, 0.4, 0], clusters: [0.75, 0.3, 0],
+    strata: [0.45, 0.3, 0], pillars: [0.3, 0.55, 0], scroll: [0.55, 0.5, 0],
+  };
+
+  // ---------------------------------------------------------------- GL
+  const VS = `attribute vec4 a;uniform mat3 R;uniform float uDist,uF,uSize;varying float vB,vRim;
+  void main(){vec3 p=R*a.xyz;float w=uDist-p.z;gl_Position=vec4(p.xy*uF/w,0.,1.);
+  vec3 n=normalize(p+vec3(1e-5));float lam=max(dot(n,normalize(vec3(.7,.6,.5))),0.);
+  float rim=pow(1.-abs(n.z),3.)*step(0.,n.x);float depth=clamp(.35+.65*(p.z+1.)*.5,.15,1.);
+  vB=a.w*(.22+.62*lam+.5*rim)*depth;vRim=rim;gl_PointSize=uSize*(.75+.5*min(a.w,1.6))/w;}`;
+  const FS = `precision mediump float;varying float vB,vRim;uniform float uGain;
+  void main(){vec2 c=gl_PointCoord-.5;float d=dot(c,c)*4.;if(d>1.)discard;float g=exp(-d*3.);
+  vec3 col=mix(vec3(1.,.929,.843),vec3(1.,.667,.431),vRim*.35);float k=g*vB*uGain;gl_FragColor=vec4(col*k,k);}`;
+  const sh = (type, src) => { const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); return s; };
+  const prog = gl.createProgram();
+  gl.attachShader(prog, sh(gl.VERTEX_SHADER, VS)); gl.attachShader(prog, sh(gl.FRAGMENT_SHADER, FS)); gl.linkProgram(prog);
+  if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) { fail(); return; }
+  gl.useProgram(prog);
+  const U = n => gl.getUniformLocation(prog, n);
+  const uR = U('R'), uDist = U('uDist'), uF = U('uF'), uSize = U('uSize'), uGain = U('uGain');
+  const aLoc = gl.getAttribLocation(prog, 'a');
+  gl.enableVertexAttribArray(aLoc);
+  gl.enable(gl.BLEND); gl.blendFunc(gl.ONE, gl.ONE); gl.enable(gl.SCISSOR_TEST); gl.clearColor(0, 0, 0, 0);
+
+  const cache = {};
+  function buffer(key) {
+    if (cache[key]) return cache[key];
+    const base = key === 'trajectory-34' ? 'trajectory' : key;
+    const C = Cloud(7 + base.length * 13); MAKERS[base](C);
+    const p = C.pts, N = p.length / 4;
+    let cx = 0, cy = 0; for (let i = 0; i < N; i++) { cx += p[i * 4]; cy += p[i * 4 + 1]; } cx /= N; cy /= N;
+    let cz = 0; for (let i = 0; i < N; i++) cz += p[i * 4 + 2]; cz /= N;
+    const rad = []; for (let i = 0; i < N; i++) rad.push(Math.hypot(p[i * 4] - cx, p[i * 4 + 1] - cy, p[i * 4 + 2] - cz));
+    rad.sort((a, b) => a - b); const s = 1 / (rad[Math.floor(N * 0.993)] || 1);
+    const f = new Float32Array(p.length);
+    for (let i = 0; i < N; i++) { f[i * 4] = (p[i * 4] - cx) * s; f[i * 4 + 1] = (p[i * 4 + 1] - cy) * s; f[i * 4 + 2] = (p[i * 4 + 2] - cz) * s; f[i * 4 + 3] = p[i * 4 + 3]; }
+    const b = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, b); gl.bufferData(gl.ARRAY_BUFFER, f, gl.STATIC_DRAW);
+    return (cache[key] = { b, N, gain: Math.min(1.4, 14000 / N) });
+  }
+
+  function rot(ax, ay, az) {
+    const [cx, sx, cy, sy, cz, sz] = [Math.cos(ax), Math.sin(ax), Math.cos(ay), Math.sin(ay), Math.cos(az), Math.sin(az)];
+    // R = Rz·Ry·Rx, column-major for GLSL
+    const m = [
+      cz * cy, sz * cy, -sy,
+      cz * sy * sx - sz * cx, sz * sy * sx + cz * cx, cy * sx,
+      cz * sy * cx + sz * sx, sz * sy * cx - cz * sx, cy * cx,
+    ];
+    return new Float32Array(m);
+  }
+
+  let dpr = 1, W = 0, H = 0;
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, small ? 1.5 : 2);
+    W = window.innerWidth; H = window.innerHeight;
+    canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
+  }
+  resize(); addEventListener('resize', resize);
+
+  let mx = 0, my = 0, tx = 0, ty = 0;
+  addEventListener('pointermove', e => { tx = e.clientX / W * 2 - 1; ty = e.clientY / H * 2 - 1; }, { passive: true });
+
+  function fail() { document.documentElement.classList.remove('gl'); canvas.remove(); }
+  canvas.addEventListener('webglcontextlost', e => { e.preventDefault(); fail(); });
+
+  const t0 = performance.now();
+  function frame(now) {
+    requestAnimationFrame(frame);
+    if (document.hidden) return;
+    mx += (tx - mx) * 0.05; my += (ty - my) * 0.05;
+    const t = (now - t0) / 1000;
+    gl.scissor(0, 0, canvas.width, canvas.height); gl.clear(gl.COLOR_BUFFER_BIT);
+    for (const el of slots) {
+      const r = el.getBoundingClientRect();
+      if (r.bottom < -40 || r.top > H + 40 || r.width < 2) continue;
+      const size = Math.min(r.width, r.height || r.width), x = r.left + (r.width - size) / 2, y = r.top + ((r.height || size) - size) / 2;
+      const key = el.dataset.obj, obj = buffer(key), pose = POSE[key] || [0.4, 0.4, 0];
+      const prog = (y + size / 2 - H / 2) / H;            // -1 … 1 as the slot crosses the viewport
+      const vx = Math.round(x * dpr), vy = Math.round((H - y - size) * dpr), vs = Math.round(size * dpr);
+      gl.viewport(vx, vy, vs, vs); gl.scissor(Math.max(vx, 0), Math.max(vy, 0), vs, vs);
+      gl.uniformMatrix3fv(uR, false, rot(pose[0] + my * 0.18 + prog * 0.25, pose[1] + t * 0.12 + prog * 1.1 + mx * 0.35, pose[2]));
+      gl.uniform1f(uDist, 3.2); gl.uniform1f(uF, 2.5);
+      gl.uniform1f(uSize, 11 * dpr * size / 560); gl.uniform1f(uGain, obj.gain);
+      gl.bindBuffer(gl.ARRAY_BUFFER, obj.b); gl.vertexAttribPointer(aLoc, 4, gl.FLOAT, false, 0, 0);
+      gl.drawArrays(gl.POINTS, 0, obj.N);
+    }
+  }
+  requestAnimationFrame(frame);
 })();
 </script>
 </body>
