@@ -261,10 +261,10 @@
       <figure class="col-c" data-obj="trajectory"><img class="obj" src="assets/objects/trajectory.webp" width="840" height="840" alt="Rendered object: a coiled trajectory of 36 points, 13 of them highlighted" decoding="async"></figure>
       <div class="col-r">
         <p class="b29">Law, in a language most models were not designed for.</p>
-        <p class="txt muted">The work runs from embedding and retrieval infrastructure, through entity resolution and metadata standardization, to multi-agent platforms and production pipelines serving real users.</p>
+        <p class="txt muted">The work runs from embedding and retrieval infrastructure, through entity resolution and metadata standardization, to multi-agent platforms, production pipelines serving real users, and — most recently — controlled evaluation of the agents themselves.</p>
       </div>
     </div>
-    <ul class="stats" aria-label="At a glance"><li><span class="stat-n">4</span><span class="lbl muted">Co-authored papers</span></li><li><span class="stat-n">6</span><span class="lbl muted">Systems built solo</span></li><li><span class="stat-n">2</span><span class="lbl muted">Team platforms led</span></li><li><span class="stat-n">~50</span><span class="lbl muted">Legal &amp; regulatory sources</span></li><li><span class="stat-n">5</span><span class="lbl muted">RAG architectures benchmarked</span></li><li><span class="stat-n">196K</span><span class="lbl muted">Token context, no vector DB</span></li></ul>
+    <ul class="stats" aria-label="At a glance"><li><span class="stat-n">4</span><span class="lbl muted">Co-authored papers</span></li><li><span class="stat-n">7</span><span class="lbl muted">Systems built solo</span></li><li><span class="stat-n">2</span><span class="lbl muted">Team platforms led</span></li><li><span class="stat-n">~50</span><span class="lbl muted">Legal &amp; regulatory sources</span></li><li><span class="stat-n">5</span><span class="lbl muted">RAG architectures benchmarked</span></li><li><span class="stat-n">72</span><span class="lbl muted">Agent runs, one variable</span></li></ul>
   </section>
 
   <section class="screen" id="profile" data-nav="intro" aria-labelledby="profile-t">
@@ -277,15 +277,15 @@
       <figure class="col-c" data-obj="trajectory-34"><img class="obj" src="assets/objects/trajectory-34.webp" width="840" height="840" alt="The same trajectory seen from a three-quarter angle" loading="lazy" decoding="async"></figure>
       <div class="col-r">
         <p class="b29">I build the evaluation harness before I commit to an architecture. Then I carry the answer into production.</p>
-        <p class="txt muted">Sole author of six focused systems; lead contributor on larger team platforms.</p>
+        <p class="txt muted">Sole author of seven focused systems; lead contributor on larger team platforms.</p>
       </div>
     </div>
     <details class="more">
       <summary class="ghost">Read the full profile</summary>
       <div class="cols">
-            <p class="txt">The pattern that repeats across my work is a method rather than a technology. I take an open question — can this metadata be standardized automatically, can a group of agents draft a defensible due-diligence report, which model should sit behind this product — and I build an evaluation harness to answer it before I commit to an architecture. Then I carry the answer into production.</p>
+            <p class="txt">The pattern that repeats across my work is a method rather than a technology. I take an open question — can this metadata be standardized automatically, can a group of agents draft a defensible due-diligence report, does the code around a model change what an agent achieves — and I build an evaluation harness to answer it before I commit to an architecture. Then I carry the answer into production.</p>
             <p class="txt">That second half is the part I care about. Several of these answers now run on live Kubernetes, on schedules, with cost ceilings and failure handling. One of them — a document-generation engine I wrote for a small internal tool — was later adopted wholesale by the company’s flagship pipeline. I would rather build a capability once and see it travel than ship a demo that impresses and then rots.</p>
-            <p class="txt">I work at both ends of the collaboration spectrum: sole author of six focused systems, and lead contributor on larger team platforms. The surface area is wide for a research role — Python backends, React and TypeScript front ends, Kubernetes deployment, model training and fine-tuning, formal benchmark design — because in applied research the gap between a result and a system is usually where the interesting problems live.</p>
+            <p class="txt">I work at both ends of the collaboration spectrum: sole author of seven focused systems, and lead contributor on larger team platforms. The surface area is wide for a research role — Python backends, React and TypeScript front ends, Kubernetes deployment, model training and fine-tuning, formal benchmark design — because in applied research the gap between a result and a system is usually where the interesting problems live.</p>
             <p class="txt">My domain is Turkish legal language. It is a genuinely hard setting: morphologically rich, under-resourced relative to English, and unforgiving about correctness, since a wrong citation is not a rounding error but a professional liability. Much of my work is about closing that gap — training Turkish retrieval and embedding models, grounding every generated claim to a source, and building the ingestion layer beneath it all.</p>
       </div>
     </details>
@@ -395,15 +395,66 @@
     <div class="screen" style="min-height:0; padding-bottom:0; padding-top:120px">
       <div class="section-intro rise">
         <h2 id="work-t">Selected work.</h2>
-        <p class="txt muted">Six of ~34 projects — from sole-authored systems to team platforms I led, most of them running in production.</p>
+        <p class="txt muted">Eight of ~40 projects — from controlled agent evaluations to sole-authored systems and team platforms I led, most of them running in production.</p>
       </div>
     </div>
       <article class="screen" id="work-1" aria-labelledby="work-1-t">
-        <div class="screen-head"><span class="lbl">Selected work</span><span class="lbl muted">01 / 06</span></div>
+        <div class="screen-head"><span class="lbl">Selected work</span><span class="lbl muted">01 / 08</span></div>
+        <div class="stage rise">
+          <div class="col-l">
+            <p class="lbl ember">Lead author · 2026</p>
+            <h3 class="h-title" id="work-1-t">Controlled comparison of agent harnesses</h3>
+            <dl class="facts"><div><dt class="lbl muted">Harnesses</dt><dd class="lbl">6 in the main run</dd></div><div><dt class="lbl muted">Models</dt><dd class="lbl">3, pinned by proxy</dd></div><div><dt class="lbl muted">Runs</dt><dd class="lbl">72, hash-scored</dd></div></dl>
+          </div>
+          <figure class="col-c" data-obj="orbits"><img class="obj" src="assets/objects/orbits.webp" width="840" height="840" alt="Rendered object: six tilted rings around one shared core, one ring broken" loading="lazy" decoding="async"></figure>
+          <div class="col-r">
+            <p class="b29">Same model, same tools, same prompt — only the agent loop changes.</p>
+            <div class="callout"><p class="lbl muted">Finding</p><p class="txt">Accuracy did not depend on the harness; cost and time followed the model. The one split is reported as a lead to test, not a result.</p></div>
+          </div>
+        </div>
+        <div class="screen-foot">
+          <p class="lbl muted stack">Python · recording LLM proxy with pinned sampling · shared MCP tool layer · Langfuse tracing · read-only corpora · MD5 answer keys · permutation tests · Docker · LaTeX</p>
+        </div>
+        <details class="more">
+          <summary class="ghost">Read more</summary>
+          <div class="cols">
+            <p class="txt">An agent has two parts: the model, which decides what to do next, and the harness — everything else. The harness wraps the task in its own system prompt, offers its own tools, decides what goes back into the context and when the loop ends. Products are usually compared whole, so it is hard to say what made the difference. This experiment holds everything but the harness fixed: one tool layer over MCP, a byte-identical prompt, memory off, a read-only corpus, and a proxy between harness and provider that pins the model, the sampling and the reasoning effort on every call and records each request — so the pins are proven from the calls, not assumed from config files.</p>
+            <p class="txt">In the main experiment six harnesses and three models made 72 attempts to download every filing of four companies from a JavaScript-rendered public portal, scored against an MD5 answer key with no model in the grading loop. 64 of 72 runs saved every document. The harnesses split on exactly one thing: a company the portal leaves out of its own listing, which one harness–model pair missed in 3 of 4 runs and no other configuration ever left as its only gap (p = 0.012). Because the pattern surfaced after looking at the data, it is reported as a hypothesis. A second axis has each harness build a knowledge base from a 1,429-document Turkish tax archive and answer 29 verified questions. A public write-up and the structured traces are in preparation.</p>
+            <p class="txt">Lesson — Almost none of the bugs in this project raised an error: a harness that silently dropped the shared system prompt, a sampling pin that came from the operator’s shell instead of the run, a converter that overwrote the read-only corpus and reported success. If something appears to work, measure that it works.</p>
+          </div>
+        </details>
+      </article>
+      <article class="screen" id="work-2" aria-labelledby="work-2-t">
+        <div class="screen-head"><span class="lbl">Selected work</span><span class="lbl muted">02 / 08</span></div>
+        <div class="stage rise">
+          <div class="col-l">
+            <p class="lbl ember">Sole author · 2026</p>
+            <h3 class="h-title" id="work-2-t">Verified collection from government websites</h3>
+            <dl class="facts"><div><dt class="lbl muted">Pipeline</dt><dd class="lbl">8 stages</dd></div><div><dt class="lbl muted">Verdicts</dt><dd class="lbl">Pass · warn · fail · inconclusive</dd></div><div><dt class="lbl muted">Rule</dt><dd class="lbl">No pass without evidence</dd></div></dl>
+          </div>
+          <figure class="col-c" data-obj="net"><img class="obj" src="assets/objects/net.webp" width="840" height="840" alt="Rendered object: a spherical net holding bright points, a few left outside" loading="lazy" decoding="async"></figure>
+          <div class="col-r">
+            <p class="b29">Collecting announcements is easy. Proving the collection is complete is the actual work.</p>
+            <div class="callout"><p class="lbl muted">Design decision</p><p class="txt">A rule that matches nothing looks exactly like a site that changed — so extraction rules are measured on real pages, and unmeasured ones are refused, never guessed.</p></div>
+          </div>
+        </div>
+        <div class="screen-foot">
+          <p class="lbl muted stack">Python · uv · MongoDB · Playwright · SHA-256 content fingerprints (raw + normalized) · archive &amp; replay · Langfuse · coding-agent scraper generation · FastAPI panel · Docker Compose · Kubernetes · pytest</p>
+        </div>
+        <details class="more">
+          <summary class="ghost">Read more</summary>
+          <div class="cols">
+            <p class="txt">A system that collects announcements from public-sector websites and then tries to prove it missed nothing. Every run passes through eight stages — discovery, collection, archive, extraction, normalization, verification, reconciliation, report — and ends in a verdict with its evidence beside it. A check that cannot find its evidence returns inconclusive and caps the whole run at a warning; nothing passes silently. A broken page does not end a run: it is recorded as a finding, and the cases a machine cannot settle go to a human queue whose decisions are logged with who made them.</p>
+            <p class="txt">Every fetched page is archived and fingerprinted twice — on the raw bytes and on the normalized content — so the same document at a new address and new content at an old address are both caught. Runs replay from the archive without touching the network, and a run without a trace is refused outright. A coding agent writes new site scrapers, and its output is accepted only when it matches the pipeline record for record.</p>
+          </div>
+        </details>
+      </article>
+      <article class="screen" id="work-3" aria-labelledby="work-3-t">
+        <div class="screen-head"><span class="lbl">Selected work</span><span class="lbl muted">03 / 08</span></div>
         <div class="stage rise">
           <div class="col-l">
             <p class="lbl ember">Sole maintainer</p>
-            <h3 class="h-title" id="work-1-t">Production news intelligence pipeline</h3>
+            <h3 class="h-title" id="work-3-t">Production news intelligence pipeline</h3>
             <dl class="facts"><div><dt class="lbl muted">Scope</dt><dd class="lbl">Architecture → production</dd></div><div><dt class="lbl muted">Sources</dt><dd class="lbl">~56 ingested</dd></div><div><dt class="lbl muted">Status</dt><dd class="lbl">Live, on schedule</dd></div></dl>
           </div>
           <figure class="col-c" data-obj="funnel"><img class="obj" src="assets/objects/funnel.webp" width="840" height="840" alt="Rendered object: a funnel of particles narrowing to a point" loading="lazy" decoding="async"></figure>
@@ -424,12 +475,12 @@
           </div>
         </details>
       </article>
-      <article class="screen" id="work-2" aria-labelledby="work-2-t">
-        <div class="screen-head"><span class="lbl">Selected work</span><span class="lbl muted">02 / 06</span></div>
+      <article class="screen" id="work-4" aria-labelledby="work-4-t">
+        <div class="screen-head"><span class="lbl">Selected work</span><span class="lbl muted">04 / 08</span></div>
         <div class="stage rise">
           <div class="col-l">
             <p class="lbl ember">Lead contributor</p>
-            <h3 class="h-title" id="work-2-t">Multi-agent platform for legal due diligence</h3>
+            <h3 class="h-title" id="work-4-t">Multi-agent platform for legal due diligence</h3>
             <dl class="facts"><div><dt class="lbl muted">Team</dt><dd class="lbl">~5 engineers</dd></div><div><dt class="lbl muted">Evaluation</dt><dd class="lbl">External benchmark</dd></div><div><dt class="lbl muted">Domain</dt><dd class="lbl">Legal due diligence</dd></div></dl>
           </div>
           <figure class="col-c" data-obj="tree"><img class="obj" src="assets/objects/tree.webp" width="840" height="840" alt="Rendered object: a branching tree of nodes" loading="lazy" decoding="async"></figure>
@@ -450,12 +501,12 @@
           </div>
         </details>
       </article>
-      <article class="screen" id="work-3" aria-labelledby="work-3-t">
-        <div class="screen-head"><span class="lbl">Selected work</span><span class="lbl muted">03 / 06</span></div>
+      <article class="screen" id="work-5" aria-labelledby="work-5-t">
+        <div class="screen-head"><span class="lbl">Selected work</span><span class="lbl muted">05 / 08</span></div>
         <div class="stage rise">
           <div class="col-l">
             <p class="lbl ember">Sole author</p>
-            <h3 class="h-title" id="work-3-t">Automated metadata standardization</h3>
+            <h3 class="h-title" id="work-5-t">Automated metadata standardization</h3>
             <dl class="facts"><div><dt class="lbl muted">Scope</dt><dd class="lbl">Research → production</dd></div><div><dt class="lbl muted">Standard</dt><dd class="lbl">Dublin Core, 15-element</dd></div><div><dt class="lbl muted">Extension</dt><dd class="lbl">Knowledge graph</dd></div></dl>
           </div>
           <figure class="col-c" data-obj="clusters"><img class="obj" src="assets/objects/clusters.webp" width="840" height="840" alt="Rendered object: fifteen clusters of points in a ring" loading="lazy" decoding="async"></figure>
@@ -475,12 +526,12 @@
           </div>
         </details>
       </article>
-      <article class="screen" id="work-4" aria-labelledby="work-4-t">
-        <div class="screen-head"><span class="lbl">Selected work</span><span class="lbl muted">04 / 06</span></div>
+      <article class="screen" id="work-6" aria-labelledby="work-6-t">
+        <div class="screen-head"><span class="lbl">Selected work</span><span class="lbl muted">06 / 08</span></div>
         <div class="stage rise">
           <div class="col-l">
             <p class="lbl ember">Author</p>
-            <h3 class="h-title" id="work-4-t">Legal &amp; regulatory data infrastructure</h3>
+            <h3 class="h-title" id="work-6-t">Legal &amp; regulatory data infrastructure</h3>
             <dl class="facts"><div><dt class="lbl muted">Span</dt><dd class="lbl">Longest-running work</dd></div><div><dt class="lbl muted">Coverage</dt><dd class="lbl">~50 institutions</dd></div><div><dt class="lbl muted">Reach</dt><dd class="lbl">National + international</dd></div></dl>
           </div>
           <figure class="col-c" data-obj="strata"><img class="obj" src="assets/objects/strata.webp" width="840" height="840" alt="Rendered object: a column of stacked layers" loading="lazy" decoding="async"></figure>
@@ -500,12 +551,12 @@
           </div>
         </details>
       </article>
-      <article class="screen" id="work-5" aria-labelledby="work-5-t">
-        <div class="screen-head"><span class="lbl">Selected work</span><span class="lbl muted">05 / 06</span></div>
+      <article class="screen" id="work-7" aria-labelledby="work-7-t">
+        <div class="screen-head"><span class="lbl">Selected work</span><span class="lbl muted">07 / 08</span></div>
         <div class="stage rise">
           <div class="col-l">
             <p class="lbl ember">Sole author</p>
-            <h3 class="h-title" id="work-5-t">Comparative retrieval &amp; model evaluation lab</h3>
+            <h3 class="h-title" id="work-7-t">Comparative retrieval &amp; model evaluation lab</h3>
             <dl class="facts"><div><dt class="lbl muted">Architectures</dt><dd class="lbl">5 compared</dd></div><div><dt class="lbl muted">Backends</dt><dd class="lbl">5 model families</dd></div><div><dt class="lbl muted">Tracking</dt><dd class="lbl">MLflow · LaTeX reports</dd></div></dl>
           </div>
           <figure class="col-c" data-obj="pillars"><img class="obj" src="assets/objects/pillars.webp" width="840" height="840" alt="Rendered object: five pillars of different heights" loading="lazy" decoding="async"></figure>
@@ -525,12 +576,12 @@
           </div>
         </details>
       </article>
-      <article class="screen" id="work-6" aria-labelledby="work-6-t">
-        <div class="screen-head"><span class="lbl">Selected work</span><span class="lbl muted">06 / 06</span></div>
+      <article class="screen" id="work-8" aria-labelledby="work-8-t">
+        <div class="screen-head"><span class="lbl">Selected work</span><span class="lbl muted">08 / 08</span></div>
         <div class="stage rise">
           <div class="col-l">
             <p class="lbl ember">Sole author</p>
-            <h3 class="h-title" id="work-6-t">Long-context reasoning without retrieval</h3>
+            <h3 class="h-title" id="work-8-t">Long-context reasoning without retrieval</h3>
             <dl class="facts"><div><dt class="lbl muted">Context</dt><dd class="lbl">196K tokens</dd></div><div><dt class="lbl muted">Corpus</dt><dd class="lbl">100 docs / session</dd></div><div><dt class="lbl muted">Retrieval</dt><dd class="lbl">None — by design</dd></div></dl>
           </div>
           <figure class="col-c" data-obj="scroll"><img class="obj" src="assets/objects/scroll.webp" width="840" height="840" alt="Rendered object: a tightly rolled spiral sheet" loading="lazy" decoding="async"></figure>
@@ -562,6 +613,8 @@
         <li class="card"><p class="lbl ember">Entity resolution</p><h3 class="h-card">Turkish entity resolution pipeline</h3><p class="txt muted">An end-to-end arc from research to a debugged, tested pipeline, comparing compact static embeddings (model2vec) against Turkish sentence-similarity models for resolving entities across noisy legal text.</p></li>
         <li class="card"><p class="lbl ember">Reproduction study</p><h3 class="h-card">Multi-agent synthetic data generation</h3><p class="txt muted">A faithful reimplementation of a published multi-agent pipeline for generating tool-use training trajectories — tool specs, agent diversification, rubric tasks, user and tool simulators, judge-based rejection sampling — each module mapped to its section in the paper.</p></li>
         <li class="card"><p class="lbl ember">Safety &amp; evaluation</p><h3 class="h-card">Guardrails evaluation arena</h3><p class="txt muted">Dataset construction and evaluation comparing guardrail strategies across model families, with Turkish coverage built through model translation and manual correction — safety tooling is overwhelmingly English-first.</p></li>
+        <li class="card"><p class="lbl ember">Agent oversight</p><h3 class="h-card">Profiling and judging agent runs</h3><p class="txt muted">Developer on a team study of which agent harness and which model fit which task, and at what cost: every model call recorded through a pinning proxy, each run profiled for calls, tools, duration and cache use, and a second model tested as a judge — with deliberately injected misbehaviour and text monitors to check it. Paper in preparation.</p></li>
+        <li class="card"><p class="lbl ember">Model serving</p><h3 class="h-card">On-prem LLM acceptance testing</h3><p class="txt muted">An acceptance suite for self-hosted model deployments on vLLM and SGLang — context ceiling, throughput across context length and concurrency, prefix cache, a ten-minute soak, long outputs, tool-call format — plus engine-matched serving benchmarks on H200 GPUs, including speculative decoding.</p></li>
         <li class="card"><p class="lbl ember">Benchmark design</p><h3 class="h-card">Turkish legal-AI benchmarks</h3><p class="txt muted">Authored benchmark tasks for Turkish legal reasoning in a standard task format, and bridged an internal legal knowledge-graph orchestrator to an external benchmark scored by an independent model judge.</p></li>
       </ul>
     </div>
@@ -576,7 +629,8 @@
         <li><span class="dot" aria-hidden="true"></span><span class="stat-n">02</span><span class="lbl muted">Early — mid 2025</span><h3 class="h-step">Agentic research &amp; entity resolution</h3><p class="txt muted">Function-calling benchmark research and tool-use model evaluation; agentic architecture research for a query router; a complete entity-resolution arc from literature review to tested pipeline.</p></li>
         <li><span class="dot" aria-hidden="true"></span><span class="stat-n">03</span><span class="lbl muted">Mid — late 2025</span><h3 class="h-step">Metadata, clustering &amp; model training</h3><p class="txt muted">Metadata standardization through to production and a knowledge graph; retrieval model training, a Turkish translation model, incremental clustering, the guardrails arena. My most productive period.</p></li>
         <li><span class="dot" aria-hidden="true"></span><span class="stat-n">04</span><span class="lbl muted">Early — mid 2026</span><h3 class="h-step">Multi-agent platforms</h3><p class="txt muted">Agent architecture proofs of concept and an agent evaluation framework; a case-law reasoning use case; output-consistency detection; local LLM benchmarking on specialized accelerators; frontier-model validation trials.</p></li>
-        <li><span class="dot" aria-hidden="true"></span><span class="stat-n">05</span><span class="lbl muted">Current</span><h3 class="h-step">Production systems &amp; interoperability</h3><p class="txt muted">Deployment and distribution for the news pipeline; corpus-grounded tool routing over MCP; an external legal benchmark made scorable by an independent judge; A2A and agent-memory research; meeting summarization.</p></li>
+        <li><span class="dot" aria-hidden="true"></span><span class="stat-n">05</span><span class="lbl muted">Mid 2026</span><h3 class="h-step">Production systems &amp; interoperability</h3><p class="txt muted">Deployment and distribution for the news pipeline; corpus-grounded tool routing over MCP; an external legal benchmark made scorable by an independent judge; A2A and agent-memory research; meeting summarization.</p></li>
+        <li><span class="dot" aria-hidden="true"></span><span class="stat-n">06</span><span class="lbl muted">Current</span><h3 class="h-step">Agent evaluation &amp; verified collection</h3><p class="txt muted">Controlled harness comparisons with pinned models; profiling and judging agent runs for a team paper; verified government-site collection with agent-written scrapers; acceptance tests for on-prem model serving. Applying for a thesis M.Sc. in Artificial Intelligence, Spring 2027.</p></li>
       </ol>
     </div>
   </section>
@@ -587,17 +641,31 @@
       <div class="section-intro"><h2 id="scope-t">Technical scope.</h2></div>
       <dl>
         <div><dt class="lbl">Languages</dt><dd class="txt">Python (primary) · TypeScript / JavaScript · SQL · LaTeX · Bash</dd></div>
-        <div><dt class="lbl">LLM &amp; agent systems</dt><dd class="txt">Hierarchical multi-agent orchestration · MCP · A2A protocol · function calling · prompt optimization · model-as-judge evaluation · agent memory · guardrails</dd></div>
+        <div><dt class="lbl">LLM &amp; agent systems</dt><dd class="txt">Hierarchical multi-agent orchestration · MCP · A2A protocol · function calling · prompt optimization · model-as-judge evaluation · agent harnesses (opencode, pi, hermes and others) · LLM tracing (Langfuse) · agent memory · guardrails</dd></div>
         <div><dt class="lbl">Retrieval &amp; RAG</dt><dd class="txt">Dense / hybrid / graph / agentic RAG · FAISS · BM25 · rank fusion · Qdrant · Elasticsearch · Neo4j + Cypher · reranking · chunking · long-context reasoning</dd></div>
         <div><dt class="lbl">NLP &amp; modeling</dt><dd class="txt">Embeddings (BGE-M3, MiniLM, model2vec, Turkish STS) · ColBERT · BERT-family fine-tuning · entity resolution · clustering · machine translation · guardrail models · OCR</dd></div>
         <div><dt class="lbl">Model families</dt><dd class="txt">Claude · Gemini · DeepSeek · MiniMax · Kimi · GLM · Qwen · Llama · open-weight self-hosted</dd></div>
         <div><dt class="lbl">Data &amp; storage</dt><dd class="txt">MongoDB · Qdrant · Neo4j · Elasticsearch · FAISS · SQLite · Kafka · Redis + Celery · pandas</dd></div>
-        <div><dt class="lbl">Platform &amp; MLOps</dt><dd class="txt">Docker · Kubernetes · GitOps · CI/CD · serverless (Modal) · rented + on-prem GPU · specialized accelerators · MLflow · scheduled workloads</dd></div>
+        <div><dt class="lbl">Platform &amp; MLOps</dt><dd class="txt">Docker · Kubernetes · GitOps · CI/CD · serverless (Modal) · rented + on-prem GPU · vLLM / SGLang serving · speculative decoding · specialized accelerators · MLflow · scheduled workloads</dd></div>
         <div><dt class="lbl">HPC</dt><dd class="txt">Barcelona Supercomputing Center (BSC) — MareNostrum5, project member, 2025–2026</dd></div>
         <div><dt class="lbl">Web &amp; API</dt><dd class="txt">FastAPI · uvicorn · Streamlit · React 19 · Vite · Tailwind · Playwright · structured scraping</dd></div>
         <div><dt class="lbl">Document engineering</dt><dd class="txt">python-docx · PyMuPDF · WeasyPrint · python-pptx · pdfplumber · automated LaTeX reports</dd></div>
-        <div><dt class="lbl">Evaluation</dt><dd class="txt">Benchmark design · external benchmark integration · model bake-offs · synthetic data · rubric &amp; judge scoring · pytest</dd></div>
+        <div><dt class="lbl">Evaluation</dt><dd class="txt">Benchmark design · controlled agent experiments · external benchmark integration · model bake-offs · hash-verified answer keys · permutation tests · synthetic data · rubric &amp; judge scoring · pytest</dd></div>
         <div><dt class="lbl">Domain</dt><dd class="txt">Turkish legal NLP · data protection law (KVKK / GDPR) · arbitration · regulatory monitoring · due diligence · Dublin Core</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="screen" id="education" data-nav="work" aria-labelledby="education-t">
+    <div class="screen-head"><span class="lbl">Education &amp; honors</span><span class="lbl muted">2021 — 2027</span></div>
+    <div class="scope rise">
+      <div class="section-intro"><h2 id="education-t">Education.</h2></div>
+      <dl>
+        <div><dt class="lbl">Next</dt><dd class="txt">Applying for a thesis-based M.Sc. in Artificial Intelligence, Spring 2027 — research interest: reliable evaluation of language models and agents in lower-resource languages, with Turkish as the testbed. Continuing at NewMind AI alongside.</dd></div>
+        <div><dt class="lbl">B.Sc.</dt><dd class="txt">Computer Engineering, Selçuk University, Konya — 2021–2025 · Graduated with High Honors · GPA 3.29 / 4.00 · Graduation project: Cosmetique, an AI-based personalized recommendation system</dd></div>
+        <div><dt class="lbl">Research grant</dt><dd class="txt">TÜBİTAK 2209-A Undergraduate Research Project Grant — 2023</dd></div>
+        <div><dt class="lbl">Competitions</dt><dd class="txt">TEKNOFEST finalist ×3 — Swarm Robots, 4th (2023) · Technological Applications in Psychology, 13th (2023) · Travel Hackathon, top 10 teams (2022)</dd></div>
+        <div><dt class="lbl">HPC</dt><dd class="txt">Barcelona Supercomputing Center — MareNostrum5, project member, 2025–2026</dd></div>
       </dl>
     </div>
   </section>
@@ -768,6 +836,29 @@
         C.shell([x, -1 + h + 0.08, 0], 420, 0.05, 1);
       });
     },
+    orbits(C) {
+      // one shared core (the model), six harness loops around it; one loop is broken where a node is missing
+      C.ball([0, 0, 0], 4200, 0.2, 1); C.shell([0, 0, 0], 1400, 0.24, 0.5);
+      for (let i = 0; i < 6; i++) {
+        const phi = i / 6 * 3.14159265, tau = 1.05 + 0.12 * Math.sin(i * 2.1), rad = 0.7 + 0.055 * i, gap = i === 4;
+        const at = (a) => { const x = Math.cos(a) * rad, z0 = Math.sin(a) * rad, y = -z0 * Math.sin(tau), z = z0 * Math.cos(tau);
+          return [x * Math.cos(phi) + z * Math.sin(phi), y, -x * Math.sin(phi) + z * Math.cos(phi)]; };
+        const a0 = gap ? 0.55 : 0, a1 = gap ? 6.2831853 - 0.55 : 6.2831853;
+        C.tube(Array.from({ length: 97 }, (_, k) => at(a0 + (a1 - a0) * k / 96)), 2400, 0.007, 0.5);
+        [0, 1.5707963, 3.1415927, 4.712389].forEach((a, k) => { if (!(gap && k === 0)) C.shell(at(a), 160, 0.03, 1); });
+      }
+    },
+    net(C) {
+      // a spherical net of meridians and parallels; verified points inside, a few recorded outside
+      const R = 1, line = (pts) => C.tube(pts, 900, 0.004, 0.45);
+      for (let m = 0; m < 12; m++) { const a = m / 12 * 6.2831853;
+        line(Array.from({ length: 49 }, (_, k) => { const t = -1.5707963 + 3.1415927 * k / 48; return [Math.cos(t) * Math.cos(a) * R, Math.sin(t) * R, Math.cos(t) * Math.sin(a) * R]; })); }
+      for (let q = -2; q <= 2; q++) { const t = q * 0.5, r = Math.cos(t) * R, y = Math.sin(t) * R;
+        line(Array.from({ length: 97 }, (_, k) => { const a = k / 96 * 6.2831853; return [Math.cos(a) * r, y, Math.sin(a) * r]; })); }
+      for (let i = 0; i < 26; i++) { const u = C.unit(), s = 0.62 * Math.cbrt(C.r()); C.shell([u[0] * s, u[1] * s, u[2] * s], 200, 0.032, 0.85); }
+      C.ball([0, 0, 0], 4000, 0.7, 0.1);
+      for (let i = 0; i < 4; i++) { const u = C.unit(); C.shell([u[0] * 1.25, u[1] * 1.25, u[2] * 1.25], 120, 0.03, 0.35); }
+    },
     scroll(C) {
       for (let i = 0; i < C.n(34000); i++) {
         const t = C.r(), a = t * 6.2831853 * 4.5, rad = 0.25 + 0.7 * t;
@@ -780,6 +871,7 @@
     trajectory: [0.35, 0.3, -0.35], 'trajectory-34': [1.2, 0.8, 0.2], ontology: [0.4, 0.5, 0], grid: [0.55, 0.7, 0],
     span: [0.35, 0.4, 0], funnel: [0.45, 0.2, 0], tree: [0.35, 0.4, 0], clusters: [0.75, 0.3, 0],
     strata: [0.45, 0.3, 0], pillars: [0.3, 0.55, 0], scroll: [0.55, 0.5, 0],
+    orbits: [0.3, 0.4, 0], net: [0.35, 0.5, 0],
   };
 
   // ---------------------------------------------------------------- GL
