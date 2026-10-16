@@ -157,7 +157,7 @@
   /* list screens */
   .grid3{ display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:18px; margin-top:41px; }
   .grid3 .txt{ font-size:15px; }
-  .timeline{ display:grid; grid-template-columns:repeat(5, minmax(0, 1fr)); gap:31px; margin-top:68px; border-top:1px dashed var(--drift); }
+  .timeline{ display:grid; grid-template-columns:repeat(6, minmax(0, 1fr)); gap:24px; margin-top:68px; border-top:1px dashed var(--drift); }
   .timeline li{ display:flex; flex-direction:column; gap:18px; }
   .timeline .dot{ width:9px; height:9px; border-radius:9999px; background:var(--cream); margin-top:-5px; }
   .timeline .txt{ font-size:15px; }
@@ -613,7 +613,7 @@
         <li class="card"><p class="lbl ember">Entity resolution</p><h3 class="h-card">Turkish entity resolution pipeline</h3><p class="txt muted">An end-to-end arc from research to a debugged, tested pipeline, comparing compact static embeddings (model2vec) against Turkish sentence-similarity models for resolving entities across noisy legal text.</p></li>
         <li class="card"><p class="lbl ember">Reproduction study</p><h3 class="h-card">Multi-agent synthetic data generation</h3><p class="txt muted">A faithful reimplementation of a published multi-agent pipeline for generating tool-use training trajectories — tool specs, agent diversification, rubric tasks, user and tool simulators, judge-based rejection sampling — each module mapped to its section in the paper.</p></li>
         <li class="card"><p class="lbl ember">Safety &amp; evaluation</p><h3 class="h-card">Guardrails evaluation arena</h3><p class="txt muted">Dataset construction and evaluation comparing guardrail strategies across model families, with Turkish coverage built through model translation and manual correction — safety tooling is overwhelmingly English-first.</p></li>
-        <li class="card"><p class="lbl ember">Agent oversight</p><h3 class="h-card">Profiling and judging agent runs</h3><p class="txt muted">Developer on a team study of which agent harness and which model fit which task, and at what cost: every model call recorded through a pinning proxy, each run profiled for calls, tools, duration and cache use, and a second model tested as a judge — with deliberately injected misbehaviour and text monitors to check it. Paper in preparation.</p></li>
+        <li class="card"><p class="lbl ember">Agent oversight</p><h3 class="h-card">Profiling and judging agent runs</h3><p class="txt muted">Developer on a team study of which agent harness and which model fit which task, and at what cost — profiling agent runs and testing whether a second model can judge them. Paper in preparation.</p></li>
         <li class="card"><p class="lbl ember">Model serving</p><h3 class="h-card">On-prem LLM acceptance testing</h3><p class="txt muted">An acceptance suite for self-hosted model deployments on vLLM and SGLang — context ceiling, throughput across context length and concurrency, prefix cache, a ten-minute soak, long outputs, tool-call format — plus engine-matched serving benchmarks on H200 GPUs, including speculative decoding.</p></li>
         <li class="card"><p class="lbl ember">Benchmark design</p><h3 class="h-card">Turkish legal-AI benchmarks</h3><p class="txt muted">Authored benchmark tasks for Turkish legal reasoning in a standard task format, and bridged an internal legal knowledge-graph orchestrator to an external benchmark scored by an independent model judge.</p></li>
       </ul>
@@ -621,7 +621,7 @@
   </section>
 
   <section class="screen" id="trajectory" data-nav="work" aria-labelledby="trajectory-t">
-    <div class="screen-head"><span class="lbl">Trajectory</span><span class="lbl muted">2024 — 2026</span></div>
+    <div class="screen-head"><span class="lbl">Trajectory</span><span class="lbl muted">2024 — now</span></div>
     <div class="rise" style="padding-top:41px">
       <h2 id="trajectory-t">Trajectory.</h2>
       <ol class="timeline">
